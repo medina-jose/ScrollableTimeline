@@ -10,6 +10,12 @@ var renderer = new THREE.WebGLRenderer();
 renderer.setSize( window.innerWidth, window.innerHeight );
 document.body.appendChild( renderer.domElement );
 
+var size = 10;
+var divisions = 10;
+
+var gridHelper = new THREE.GridHelper( size, divisions );
+scene.add( gridHelper );
+
 // controls
 var controls = new THREE.OrbitControls(camera, renderer.domElement);
 controls.enableDamping = true;
