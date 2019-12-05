@@ -10,8 +10,8 @@ var renderer = new THREE.WebGLRenderer();
 renderer.setSize( window.innerWidth, window.innerHeight );
 document.body.appendChild( renderer.domElement );
 
-var size = 10;
-var divisions = 10;
+var size = 1000;
+var divisions = 50;
 
 var gridHelper = new THREE.GridHelper( size, divisions );
 scene.add( gridHelper );
@@ -21,6 +21,9 @@ var controls = new THREE.OrbitControls(camera, renderer.domElement);
 controls.enableDamping = true;
 controls.dampingFactor = 0.25;
 controls.enableZoom = true;
+
+var tube = createSpline();
+scene.add(tube);
 
 // lighting
 var keyLight = new THREE.DirectionalLight(new THREE.Color('hsl(30, 100%, 75%)'), 1.0);
@@ -43,11 +46,6 @@ scene.add( ambientLight );
 scene.add(keyLight);
 scene.add(fillLight);
 scene.add(backLight);
-
-var geometry = new THREE.BoxGeometry( 1, 1, 1 );
-var material = new THREE.MeshBasicMaterial( {color: 0x00ff00} );
-var cube = new THREE.Mesh( geometry, material );
-scene.add( cube );
 
 // update
 var animate = function () {
