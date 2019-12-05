@@ -1,23 +1,20 @@
 function update () {
     renderer.render(scene, camera);
     requestAnimationFrame( update );
-	// controls.update();
 
-    camPosIndex++;
-    if (camPosIndex > 1000) { camPosIndex = 0 };
-
-    let position = spline.getPoint(camPosIndex / 1000);
-    let rotation = spline.getTangent(camPosIndex / 1000);
+    let position = spline.getPoint(camPosIndex / 10000);
+    let rotation = spline.getTangent(camPosIndex / 10000);
   
     // move camera along spline
     camera.position.x = position.x;
     camera.position.y = position.y;
-    camera.position.z = position.z + 100;
+    camera.position.z = position.z + 10;
+    console.log(camera.position);
     
     // look at mouse position with easing
     target.x = mouseX * .01;
     target.y = -mouseY * .01;
-    target.z = 0;
+    target.z = -10;
     camera.lookAt(target);
 }
 
@@ -34,11 +31,19 @@ function initScene () {
 
 function addEventListeners() {
     document.addEventListener('mousemove', onDocumentMouseMove, false);
+    window.addEventListener('wheel', onDocumentMouseScroll, false);
 }
 
 function onDocumentMouseMove(event) {
     mouseX = (event.clientX - windowHalfX);
     mouseY = (event.clientY - windowHalfY);
+}
+
+function onDocumentMouseScroll(event) {
+    camPosIndex += event.deltaY / 100;
+    console.log("Delta: " + event.deltaY + " Cam Index: " + camPosIndex);
+    if(camPosIndex > 10000) { camPosIndex = 0;}
+    else if(camPosIndex < 0) { camPosIndex = 1;}
 }
 
 var scene, camera, renderer;
@@ -58,11 +63,11 @@ var position = spline.getPoint(0);
 var rotation = spline.getTangent(0);
 camera.position.x = position.x;
 camera.position.y = position.y;
-camera.position.z = position.z + 100;
+camera.position.z = position.z + 10;
 camera.rotation.x = rotation.x;
 camera.rotation.y = rotation.y;
 camera.rotation.z = rotation.z;
-camera.lookAt(new THREE.Vector3(0,0,0))
+camera.lookAt(spline.getPoint(1/spline.points.length))
 
 // controls
 // var controls = new THREE.OrbitControls(camera, renderer.domElement);
