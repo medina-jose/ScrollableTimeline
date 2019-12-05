@@ -1,57 +1,74 @@
-// scene
-var scene = new THREE.Scene();
+function update () {
+    renderer.render(scene, camera);
+    requestAnimationFrame( update );
+	// controls.update();
 
-// camera
-var camera = new THREE.PerspectiveCamera( 75, window.innerWidth/window.innerHeight, 0.1, 1000 );
-camera.position.z = 200;
+    camPosIndex++;
+    if (camPosIndex > 10000) { camPosIndex = 0 };
 
-// renderer
-var renderer = new THREE.WebGLRenderer();
-renderer.setSize( window.innerWidth, window.innerHeight );
-document.body.appendChild( renderer.domElement );
+    let position = spline.getPoint(camPosIndex / 10000);
+    let rotation = spline.getTangent(camPosIndex / 10000);
+  
+    camera.position.x = position.x;
+    camera.position.y = position.y;
+    camera.position.z = position.z + 10;
+    
+    camera.rotation.x = rotation.x;
+    camera.rotation.y = rotation.y;
+    camera.rotation.z = rotation.z;
+    
+    camera.lookAt(spline.getPoint((camPosIndex+1) / 10000));
+}
 
-var size = 1000;
-var divisions = 50;
+function initScene () {
+    this.scene = new THREE.Scene();
+    this.camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, .1, 1000);
+    this.renderer = new THREE.WebGLRenderer();
+    this.renderer.setSize(window.innerWidth, window.innerHeight);
+    document.body.appendChild(this.renderer.domElement);
 
-var gridHelper = new THREE.GridHelper( size, divisions );
-scene.add( gridHelper );
+    var gridHelper = new THREE.GridHelper( 1000, 50 );
+    scene.add( gridHelper );
+}
+
+var scene;
+var camera;
+var renderer;
+var spline;
+var camPosIndex = 0;
+
+initScene();
+
+// create and place camera on spline
+spline = createSpline();
+var position = spline.getPoint(0);
+var rotation = spline.getTangent(0);
+camera.position.x = position.x;
+camera.position.y = position.y;
+camera.position.z = position.z + 10;
+camera.rotation.x = rotation.x;
+camera.rotation.y = rotation.y;
+camera.rotation.z = rotation.z;
+camera.lookAt(spline.getPoint(1/spline.points.length))
 
 // controls
-var controls = new THREE.OrbitControls(camera, renderer.domElement);
-controls.enableDamping = true;
-controls.dampingFactor = 0.25;
-controls.enableZoom = true;
+// var controls = new THREE.OrbitControls(camera, renderer.domElement);
+// controls.enableDamping = true;
+// controls.dampingFactor = 0.25;
+// controls.enableZoom = true;
 
-var tube = createSpline();
+// tube geometry from spline
+var tubeGeo = new THREE.TubeGeometry(spline, 64, 1, 8);
+var tube = new THREE.Mesh(
+  tubeGeo,
+  new THREE.MeshBasicMaterial( { color: 0xff0000 } )
+);
 scene.add(tube);
 
-// lighting
-var keyLight = new THREE.DirectionalLight(new THREE.Color('hsl(30, 100%, 75%)'), 1.0);
-keyLight.position.set(-100, 0, 100);
+// cube geometry
+var geometry = new THREE.BoxGeometry( 1, 1, 1 );
+var material = new THREE.MeshBasicMaterial( {color: 0x00ff00} );
+var cube = new THREE.Mesh( geometry, material );
+scene.add( cube );
 
-var fillLight = new THREE.DirectionalLight(new THREE.Color('hsl(240, 100%, 75%)'), 0.75);
-fillLight.position.set(100, 0, 100);
-
-var backLight = new THREE.DirectionalLight(0xffffff, 1.0);
-backLight.position.set(100, 0, -100).normalize();
-
-var ambientLight = new THREE.AmbientLight( 0xcccccc, 5 );
-var pointLight = new THREE.PointLight( 0xffffff, 1 );
-var light = new THREE.DirectionalLight( 0xffffff );
-light.position.set( 0, 1, 1 ).normalize();
-scene.add(light);
-camera.add( pointLight );
-scene.add( camera );
-scene.add( ambientLight );
-scene.add(keyLight);
-scene.add(fillLight);
-scene.add(backLight);
-
-// update
-var animate = function () {
-	requestAnimationFrame( animate );
-	controls.update();
-	renderer.render(scene, camera);
-};
-
-animate();
+update();
