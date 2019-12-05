@@ -4,20 +4,21 @@ function update () {
 	// controls.update();
 
     camPosIndex++;
-    if (camPosIndex > 10000) { camPosIndex = 0 };
+    if (camPosIndex > 1000) { camPosIndex = 0 };
 
-    let position = spline.getPoint(camPosIndex / 10000);
-    let rotation = spline.getTangent(camPosIndex / 10000);
+    let position = spline.getPoint(camPosIndex / 1000);
+    let rotation = spline.getTangent(camPosIndex / 1000);
   
+    // move camera along spline
     camera.position.x = position.x;
     camera.position.y = position.y;
-    camera.position.z = position.z + 10;
+    camera.position.z = position.z + 100;
     
-    camera.rotation.x = rotation.x;
-    camera.rotation.y = rotation.y;
-    camera.rotation.z = rotation.z;
-    
-    camera.lookAt(spline.getPoint((camPosIndex+1) / 10000));
+    // look at mouse position with easing
+    target.x = mouseX * .01;
+    target.y = -mouseY * .01;
+    target.z = 0;
+    camera.lookAt(target);
 }
 
 function initScene () {
@@ -31,25 +32,37 @@ function initScene () {
     scene.add( gridHelper );
 }
 
-var scene;
-var camera;
-var renderer;
+function addEventListeners() {
+    document.addEventListener('mousemove', onDocumentMouseMove, false);
+}
+
+function onDocumentMouseMove(event) {
+    mouseX = (event.clientX - windowHalfX);
+    mouseY = (event.clientY - windowHalfY);
+}
+
+var scene, camera, renderer;
 var spline;
 var camPosIndex = 0;
 
-initScene();
+var mouseX = 0, mouseY = 0;
+var targetX = 0, targetY = 0, targetZ = 0;
+var target = new THREE.Vector3();
+var windowHalfX = window.innerWidth / 2;
+var windowHalfY = window.innerHeight / 2;
 
-// create and place camera on spline
+initScene();
+addEventListeners();
 spline = createSpline();
 var position = spline.getPoint(0);
 var rotation = spline.getTangent(0);
 camera.position.x = position.x;
 camera.position.y = position.y;
-camera.position.z = position.z + 10;
+camera.position.z = position.z + 100;
 camera.rotation.x = rotation.x;
 camera.rotation.y = rotation.y;
 camera.rotation.z = rotation.z;
-camera.lookAt(spline.getPoint(1/spline.points.length))
+camera.lookAt(new THREE.Vector3(0,0,0))
 
 // controls
 // var controls = new THREE.OrbitControls(camera, renderer.domElement);
