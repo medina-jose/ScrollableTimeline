@@ -5,7 +5,7 @@ import * as MATHUTIL from "./mathUtil.js";
 
 function initScene () {
     scene = new THREE.Scene();
-    camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, .1, 1000);
+    camera = new THREE.PerspectiveCamera(80, window.innerWidth/window.innerHeight, .1, 1000);
     renderer = new THREE.WebGLRenderer();
     renderer.setSize(window.innerWidth, window.innerHeight);
     document.body.appendChild(renderer.domElement);
@@ -35,17 +35,40 @@ function initScene () {
 
 function initObjects () {
     var theta = 0;
+    var texture, material, plane
 
-    for(var i=0; i<10000; i+=100)
+    texture = THREE.ImageUtils.loadTexture("../images/cover.jpg");
+    material = new THREE.MeshLambertMaterial({map: texture});
+
+    for(var i=0; i<10000; i+=500)
     {
         let position = SPLINE.getPositionOnSplineRadius(spline, 10000, i, theta, RADIUS);
 
-        fbxLoader.load(fbxModelPath + "VinylRecord.fbx", function(object) {
-            object.position.set(position.x, position.y, position.z);
-            object.scale.set(.1,.1,.1)
-            recordObjects.push(object);
-            scene.add(object);
-        });
+        plane = new THREE.Mesh(new THREE.PlaneGeometry(10, 10), material);
+        plane.material.side = THREE.DoubleSide;
+        plane.position.set(position.x, position.y, position.z);
+
+        // fbxLoader.load(fbxModelPath + "VinylRecord.fbx", function(object) {
+        //     object.position.set(position.x, position.y, position.z);
+        //     object.scale.set(.4,.4,.4)
+        //     object.traverse(function(child) {
+        //         if(child instanceof THREE.Mesh) {
+        //             var mesh = child;
+        //             mesh.material.forEach((material) => {
+        //                 if(material.name == "White") {
+        //                     material.map = THREE.ImageUtils.loadTexture("../images/cover.jpg");
+        //                     material.needsUpdate = true;
+        //                 }
+        //             });
+        //         }
+        //     });
+
+        //     recordObjects.push(object);
+        //     scene.add(object);
+        // });
+
+        recordObjects.push(plane);
+        scene.add(plane);
 
         theta += 30;
     }
@@ -57,12 +80,12 @@ function addEventListeners() {
 }
 
 function onDocumentMouseMove(event) {
-    mouseX = (event.clientX - windowHalfX);
-    mouseY = (event.clientY - windowHalfY);
+    mouseX = (event.clientX - windowHalfX) * 2;
+    mouseY = (event.clientY - windowHalfY) * 2;
 }
 
 function onDocumentMouseScroll(event) {
-    camPosIndex += event.deltaY / 100;
+    camPosIndex += event.deltaY / 10;
     console.log("Delta: " + event.deltaY + " Cam Index: " + camPosIndex);
     if(camPosIndex > 10000) { camPosIndex = 0;}
     else if(camPosIndex < 0) { camPosIndex = 1;}
@@ -79,12 +102,12 @@ function update () {
     // move camera along spline
     camera.position.x = position.x;
     camera.position.y = position.y;
-    camera.position.z = position.z;
+    camera.position.z = position.z + 10;
     
     // look at mouse position with easing
-    target.x = mouseX * .01;
-    target.y = -mouseY * .01;
-    target.z = -10;
+    target.x = -mouseX * .03;
+    target.y = -mouseY * .03;
+    target.z = camera.position.z + 180;
     camera.lookAt(target);
 
     // rotate record objects
@@ -96,7 +119,7 @@ function update () {
 var scene, camera, renderer;
 var spline;
 var camPosIndex = 0;
-const RADIUS = 600;
+const RADIUS = 1800;
 
 var mouseX = 0, mouseY = 0;
 var targetX = 0, targetY = 0, targetZ = 0;
@@ -113,16 +136,6 @@ initScene();
 addEventListeners();
 spline = SPLINE.createSpline();
 initObjects();
-
-var position = spline.getPoint(0);
-var rotation = spline.getTangent(0);
-camera.position.x = position.x;
-camera.position.y = position.y;
-camera.position.z = position.z + 10;
-camera.rotation.x = rotation.x;
-camera.rotation.y = rotation.y;
-camera.rotation.z = rotation.z;
-camera.lookAt(spline.getPoint(1/spline.points.length))
 
 // tube geometry from spline
 var tubeGeo = new THREE.TubeGeometry(spline, 64, 1, 8);

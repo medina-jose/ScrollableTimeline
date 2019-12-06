@@ -3,14 +3,14 @@ import * as MATHUTIL from "./mathUtil.js";
 
 export function createSpline() {
     var spline = new THREE.CatmullRomCurve3([
-        new THREE.Vector3(0, 0, 0),
-        new THREE.Vector3(0, 0, 20),
-        new THREE.Vector3(0, 0, 40),
-        new THREE.Vector3(0, 0, 60),
-        new THREE.Vector3(0, 0, 80),
-        new THREE.Vector3(0, 0, 100),
-        new THREE.Vector3(0, 0, 120),
-        new THREE.Vector3(0, 0, 140)
+        new THREE.Vector3(0, 100, 0),
+        new THREE.Vector3(0, 100, 20),
+        new THREE.Vector3(0, 100, 40),
+        new THREE.Vector3(0, 100, 60),
+        new THREE.Vector3(0, 100, 80),
+        new THREE.Vector3(0, 100, 100),
+        new THREE.Vector3(0, 100, 120),
+        new THREE.Vector3(0, 100, 140)
       ]);
       
     return spline;
