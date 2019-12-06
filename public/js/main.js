@@ -5,7 +5,7 @@ import * as MATHUTIL from "./mathUtil.js";
 
 function initScene () {
     scene = new THREE.Scene();
-    camera = new THREE.PerspectiveCamera(80, window.innerWidth/window.innerHeight, .1, 1000);
+    camera = new THREE.PerspectiveCamera(80, window.innerWidth/window.innerHeight, .1, 500);
     renderer = new THREE.WebGLRenderer();
     renderer.setSize(window.innerWidth, window.innerHeight);
     document.body.appendChild(renderer.domElement);
@@ -44,9 +44,11 @@ function initObjects () {
     {
         let position = SPLINE.getPositionOnSplineRadius(spline, 10000, i, theta, RADIUS);
 
-        plane = new THREE.Mesh(new THREE.PlaneGeometry(10, 10), material);
+        plane = new THREE.Mesh(new THREE.PlaneGeometry(20, 20), material);
         plane.material.side = THREE.DoubleSide;
         plane.position.set(position.x, position.y, position.z);
+        plane.rotation.y = i * 5;
+        plane.callback = function () { console.log(i); }
 
         // fbxLoader.load(fbxModelPath + "VinylRecord.fbx", function(object) {
         //     object.position.set(position.x, position.y, position.z);
@@ -77,11 +79,24 @@ function initObjects () {
 function addEventListeners() {
     document.addEventListener('mousemove', onDocumentMouseMove, false);
     window.addEventListener('wheel', onDocumentMouseScroll, false);
+    window.addEventListener('click', onDocumentMouseDown, false);
 }
 
 function onDocumentMouseMove(event) {
     mouseX = (event.clientX - windowHalfX) * 2;
     mouseY = (event.clientY - windowHalfY) * 2;
+}
+
+function onDocumentMouseDown(event) {
+    mouseX = (event.clientX / renderer.domElement.clientWidth) * 2 - 1;
+    mouseY = -(event.clientY / renderer.domElement.clientHeight) * 2 + 1;
+
+    raycaster.setFromCamera(new THREE.Vector2(mouseX, mouseY), camera);
+    var intersects = raycaster.intersectObjects(recordObjects);
+
+    if(intersects.length > 0) {
+        intersects.forEach((intersect) => { intersect.object.callback(); });
+    }
 }
 
 function onDocumentMouseScroll(event) {
@@ -119,7 +134,7 @@ function update () {
 var scene, camera, renderer;
 var spline;
 var camPosIndex = 0;
-const RADIUS = 1800;
+const RADIUS = 2000;
 
 var mouseX = 0, mouseY = 0;
 var targetX = 0, targetY = 0, targetZ = 0;
@@ -131,6 +146,7 @@ var fbxLoader = new FBXLoader();
 var fbxModelPath = "../models/fbx/";
 
 var recordObjects = [];
+var raycaster = new THREE.Raycaster();
 
 initScene();
 addEventListeners();
