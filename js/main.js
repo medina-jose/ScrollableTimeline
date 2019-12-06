@@ -9,7 +9,6 @@ function update () {
     camera.position.x = position.x;
     camera.position.y = position.y;
     camera.position.z = position.z + 10;
-    console.log(camera.position);
     
     // look at mouse position with easing
     target.x = mouseX * .01;
@@ -28,6 +27,31 @@ function initScene () {
     var gridHelper = new THREE.GridHelper( 1000, 50 );
     scene.add( gridHelper );
 }
+
+function initObjects () {
+    var theta = 0;
+    var x, y;
+
+    for(i=0; i<10000; i+=50)
+    {
+        let position = spline.getPoint(i / 10000);
+        x = radiansToDegrees(Math.sin(theta)) * radius;
+        y = radiansToDegrees(Math.cos(theta)) * radius;
+        x += position.x;
+        y += position.y;
+
+        // create a block object around spline
+        let geometry = new THREE.BoxGeometry( 1, 1, 1 );
+        let material = new THREE.MeshBasicMaterial( {color: 0xffffff} );
+        let cube = new THREE.Mesh( geometry, material );
+        cube.position.set(x, y, position.z);
+        scene.add( cube );
+
+        theta += 30;
+    }
+}
+
+function radiansToDegrees(radians) { return radians * Math.PI / 180; }
 
 function addEventListeners() {
     document.addEventListener('mousemove', onDocumentMouseMove, false);
@@ -49,6 +73,7 @@ function onDocumentMouseScroll(event) {
 var scene, camera, renderer;
 var spline;
 var camPosIndex = 0;
+var radius = 350;
 
 var mouseX = 0, mouseY = 0;
 var targetX = 0, targetY = 0, targetZ = 0;
@@ -59,6 +84,8 @@ var windowHalfY = window.innerHeight / 2;
 initScene();
 addEventListeners();
 spline = createSpline();
+initObjects();
+
 var position = spline.getPoint(0);
 var rotation = spline.getTangent(0);
 camera.position.x = position.x;
@@ -68,12 +95,6 @@ camera.rotation.x = rotation.x;
 camera.rotation.y = rotation.y;
 camera.rotation.z = rotation.z;
 camera.lookAt(spline.getPoint(1/spline.points.length))
-
-// controls
-// var controls = new THREE.OrbitControls(camera, renderer.domElement);
-// controls.enableDamping = true;
-// controls.dampingFactor = 0.25;
-// controls.enableZoom = true;
 
 // tube geometry from spline
 var tubeGeo = new THREE.TubeGeometry(spline, 64, 1, 8);
