@@ -13,7 +13,7 @@ function update () {
     // move camera along spline
     camera.position.x = position.x;
     camera.position.y = position.y;
-    camera.position.z = position.z + 10;
+    camera.position.z = position.z;
     
     // look at mouse position with easing
     target.x = mouseX * .01;
@@ -29,6 +29,25 @@ function initScene () {
     renderer.setSize(window.innerWidth, window.innerHeight);
     document.body.appendChild(renderer.domElement);
 
+    var light = new THREE.HemisphereLight( 0xffffff, 0x444444 );
+    light.position.set( 0, 200, 0 );
+    scene.add( light );
+
+    light = new THREE.DirectionalLight( 0xffffff );
+    light.position.set( 0, 200, 100 );
+    light.castShadow = true;
+    light.shadow.camera.top = 180;
+    light.shadow.camera.bottom = - 100;
+    light.shadow.camera.left = - 120;
+    light.shadow.camera.right = 120;
+    scene.add( light );
+    
+    // ground
+    var mesh = new THREE.Mesh( new THREE.PlaneBufferGeometry( 2000, 2000 ), new THREE.MeshPhongMaterial( { color: 0x999999, depthWrite: false } ) );
+    mesh.rotation.x = - Math.PI / 2;
+    mesh.receiveShadow = true;
+    scene.add( mesh );
+
     var gridHelper = new THREE.GridHelper( 1000, 50 );
     scene.add( gridHelper );
 }
@@ -36,12 +55,13 @@ function initScene () {
 function initObjects () {
     var theta = 0;
 
-    for(var i=0; i<10000; i+=50)
+    for(var i=0; i<10000; i+=100)
     {
-        let position = SPLINE.getPositionOnSplineRadius(spline, 10000, i, theta, radius);
+        let position = SPLINE.getPositionOnSplineRadius(spline, 10000, i, theta, RADIUS);
 
         fbxLoader.load(fbxModelPath + "VinylRecord.fbx", function(object) {
             object.position.set(position.x, position.y, position.z);
+            object.scale.set(.1,.1,.1)
             scene.add(object);
         });
 
@@ -76,7 +96,7 @@ function onDocumentMouseScroll(event) {
 var scene, camera, renderer;
 var spline;
 var camPosIndex = 0;
-var radius = 350;
+const RADIUS = 600;
 
 var mouseX = 0, mouseY = 0;
 var targetX = 0, targetY = 0, targetZ = 0;
