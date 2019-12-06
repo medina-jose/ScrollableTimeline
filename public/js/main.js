@@ -3,25 +3,6 @@ import { FBXLoader } from "./three/FBXLoader.js";
 import * as SPLINE from "./spline.js";
 import * as MATHUTIL from "./mathUtil.js";
 
-function update () {
-    renderer.render(scene, camera);
-    requestAnimationFrame( update );
-
-    let position = spline.getPoint(camPosIndex / 10000);
-    let rotation = spline.getTangent(camPosIndex / 10000);
-  
-    // move camera along spline
-    camera.position.x = position.x;
-    camera.position.y = position.y;
-    camera.position.z = position.z;
-    
-    // look at mouse position with easing
-    target.x = mouseX * .01;
-    target.y = -mouseY * .01;
-    target.z = -10;
-    camera.lookAt(target);
-}
-
 function initScene () {
     scene = new THREE.Scene();
     camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, .1, 1000);
@@ -62,15 +43,9 @@ function initObjects () {
         fbxLoader.load(fbxModelPath + "VinylRecord.fbx", function(object) {
             object.position.set(position.x, position.y, position.z);
             object.scale.set(.1,.1,.1)
+            recordObjects.push(object);
             scene.add(object);
         });
-
-        // create a block object around spline
-        // let geometry = new THREE.BoxGeometry( 1, 1, 1 );
-        // let material = new THREE.MeshBasicMaterial( {color: 0xffffff} );
-        // let cube = new THREE.Mesh( geometry, material );
-        // cube.position.set(position.x, position.y, position.z);
-        // scene.add( cube );
 
         theta += 30;
     }
@@ -93,6 +68,31 @@ function onDocumentMouseScroll(event) {
     else if(camPosIndex < 0) { camPosIndex = 1;}
 }
 
+
+function update () {
+    renderer.render(scene, camera);
+    requestAnimationFrame( update );
+
+    let position = spline.getPoint(camPosIndex / 10000);
+    let rotation = spline.getTangent(camPosIndex / 10000);
+  
+    // move camera along spline
+    camera.position.x = position.x;
+    camera.position.y = position.y;
+    camera.position.z = position.z;
+    
+    // look at mouse position with easing
+    target.x = mouseX * .01;
+    target.y = -mouseY * .01;
+    target.z = -10;
+    camera.lookAt(target);
+
+    // rotate record objects
+    recordObjects.forEach((recordObject) => {
+        recordObject.rotation.y += MATHUTIL.degreesToRadians(.0001);
+    });
+}
+
 var scene, camera, renderer;
 var spline;
 var camPosIndex = 0;
@@ -106,6 +106,8 @@ var windowHalfY = window.innerHeight / 2;
 
 var fbxLoader = new FBXLoader();
 var fbxModelPath = "../models/fbx/";
+
+var recordObjects = [];
 
 initScene();
 addEventListeners();
