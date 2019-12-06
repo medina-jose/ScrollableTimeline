@@ -5,6 +5,7 @@ import * as MATHUTIL from "./mathUtil.js";
 
 function initScene () {
     scene = new THREE.Scene();
+    scene.background = new THREE.Color( 0x988989 );
     camera = new THREE.PerspectiveCamera(80, window.innerWidth/window.innerHeight, .1, 500);
     renderer = new THREE.WebGLRenderer();
     renderer.setSize(window.innerWidth, window.innerHeight);
@@ -13,24 +14,10 @@ function initScene () {
     var light = new THREE.HemisphereLight( 0xffffff, 0x444444 );
     light.position.set( 0, 200, 0 );
     scene.add( light );
-
-    light = new THREE.DirectionalLight( 0xffffff );
-    light.position.set( 0, 200, 100 );
-    light.castShadow = true;
-    light.shadow.camera.top = 180;
-    light.shadow.camera.bottom = - 100;
-    light.shadow.camera.left = - 120;
-    light.shadow.camera.right = 120;
-    scene.add( light );
     
-    // ground
-    var mesh = new THREE.Mesh( new THREE.PlaneBufferGeometry( 2000, 2000 ), new THREE.MeshPhongMaterial( { color: 0x999999, depthWrite: false } ) );
-    mesh.rotation.x = - Math.PI / 2;
-    mesh.receiveShadow = true;
-    scene.add( mesh );
 
-    var gridHelper = new THREE.GridHelper( 1000, 50 );
-    scene.add( gridHelper );
+    // var gridHelper = new THREE.GridHelper( 1000, 50 );
+    // scene.add( gridHelper );
 }
 
 function initObjects () {
@@ -48,7 +35,12 @@ function initObjects () {
         plane.material.side = THREE.DoubleSide;
         plane.position.set(position.x, position.y, position.z);
         plane.rotation.y = i * 5;
-        plane.callback = function () { console.log(i); }
+        plane.callback = function () { 
+            mode = ViewMode.SingleRelease;
+            transitioning = true;
+            singleRelease = this;
+            this.rotation.set(0,Math.PI,0);
+        }
 
         // fbxLoader.load(fbxModelPath + "VinylRecord.fbx", function(object) {
         //     object.position.set(position.x, position.y, position.z);
@@ -65,11 +57,11 @@ function initObjects () {
         //         }
         //     });
 
-        //     recordObjects.push(object);
+        //     releaseObjects.push(object);
         //     scene.add(object);
         // });
 
-        recordObjects.push(plane);
+        releaseObjects.push(plane);
         scene.add(plane);
 
         theta += 30;
@@ -92,7 +84,7 @@ function onDocumentMouseDown(event) {
     mouseY = -(event.clientY / renderer.domElement.clientHeight) * 2 + 1;
 
     raycaster.setFromCamera(new THREE.Vector2(mouseX, mouseY), camera);
-    var intersects = raycaster.intersectObjects(recordObjects);
+    var intersects = raycaster.intersectObjects(releaseObjects);
 
     if(intersects.length > 0) {
         intersects.forEach((intersect) => { intersect.object.callback(); });
@@ -100,6 +92,8 @@ function onDocumentMouseDown(event) {
 }
 
 function onDocumentMouseScroll(event) {
+    if(mode != ViewMode.Timeline) { return; }
+
     camPosIndex += event.deltaY / 10;
     console.log("Delta: " + event.deltaY + " Cam Index: " + camPosIndex);
     if(camPosIndex > 10000) { camPosIndex = 0;}
@@ -111,33 +105,44 @@ function update () {
     renderer.render(scene, camera);
     requestAnimationFrame( update );
 
-    let position = spline.getPoint(camPosIndex / 10000);
-    let rotation = spline.getTangent(camPosIndex / 10000);
+    if(mode == ViewMode.Timeline) {
+        let position = spline.getPoint(camPosIndex / 10000);
   
-    // move camera along spline
-    camera.position.x = position.x;
-    camera.position.y = position.y;
-    camera.position.z = position.z + 10;
-    
+        // move camera along spline
+        camera.position.x = position.x;
+        camera.position.y = position.y;
+        camera.position.z = position.z + 10;
+
+        // rotate record objects
+        releaseObjects.forEach((recordObject) => {
+            recordObject.rotation.y += MATHUTIL.degreesToRadians(.0001);
+        });
+    }
+    else if (transitioning == true && singleRelease != null) {
+        camera.position.sub(singleRelease.position).setLength(30).add(singleRelease.position);
+        transitioning = false;
+    }
+   
     // look at mouse position with easing
     target.x = -mouseX * .03;
     target.y = -mouseY * .03;
     target.z = camera.position.z + 180;
     camera.lookAt(target);
 
-    // rotate record objects
-    recordObjects.forEach((recordObject) => {
-        recordObject.rotation.y += MATHUTIL.degreesToRadians(.0001);
-    });
+
+}
+
+const RADIUS = 2000;
+const ViewMode = {
+    Timeline: "Timeline",
+    SingleRelease: "SingleRelease"
 }
 
 var scene, camera, renderer;
 var spline;
 var camPosIndex = 0;
-const RADIUS = 2000;
 
 var mouseX = 0, mouseY = 0;
-var targetX = 0, targetY = 0, targetZ = 0;
 var target = new THREE.Vector3();
 var windowHalfX = window.innerWidth / 2;
 var windowHalfY = window.innerHeight / 2;
@@ -145,8 +150,12 @@ var windowHalfY = window.innerHeight / 2;
 var fbxLoader = new FBXLoader();
 var fbxModelPath = "../models/fbx/";
 
-var recordObjects = [];
+var releaseObjects = [];
+var singleRelease;
 var raycaster = new THREE.Raycaster();
+
+var mode = ViewMode.Timeline;
+var transitioning = false;
 
 initScene();
 addEventListeners();
