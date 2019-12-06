@@ -6,7 +6,7 @@ import * as MATHUTIL from "./mathUtil.js";
 function initScene () {
     scene = new THREE.Scene();
     scene.background = new THREE.Color( 0x988989 );
-    camera = new THREE.PerspectiveCamera(80, window.innerWidth/window.innerHeight, .1, 500);
+    camera = new THREE.PerspectiveCamera(80, window.innerWidth/window.innerHeight, .1, 200);
     renderer = new THREE.WebGLRenderer();
     renderer.setSize(window.innerWidth, window.innerHeight);
     document.body.appendChild(renderer.domElement);
@@ -86,8 +86,11 @@ function onDocumentMouseDown(event) {
     raycaster.setFromCamera(new THREE.Vector2(mouseX, mouseY), camera);
     var intersects = raycaster.intersectObjects(releaseObjects);
 
-    if(intersects.length > 0) {
-        intersects.forEach((intersect) => { intersect.object.callback(); });
+    if(intersects.length > 0 && mode == ViewMode.Timeline) {
+        intersects[0].object.callback();
+    }
+    else if(!transitioning && mode == ViewMode.SingleRelease) {
+        mode = ViewMode.Timeline;
     }
 }
 
