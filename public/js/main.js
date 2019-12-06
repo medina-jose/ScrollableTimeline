@@ -1,3 +1,8 @@
+import * as THREE from './three/three.module.js';
+import { FBXLoader } from "./three/FBXLoader.js";
+import * as SPLINE from "./spline.js";
+import * as MATHUTIL from "./mathUtil.js";
+
 function update () {
     renderer.render(scene, camera);
     requestAnimationFrame( update );
@@ -18,11 +23,11 @@ function update () {
 }
 
 function initScene () {
-    this.scene = new THREE.Scene();
-    this.camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, .1, 1000);
-    this.renderer = new THREE.WebGLRenderer();
-    this.renderer.setSize(window.innerWidth, window.innerHeight);
-    document.body.appendChild(this.renderer.domElement);
+    scene = new THREE.Scene();
+    camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, .1, 1000);
+    renderer = new THREE.WebGLRenderer();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    document.body.appendChild(renderer.domElement);
 
     var gridHelper = new THREE.GridHelper( 1000, 50 );
     scene.add( gridHelper );
@@ -30,28 +35,26 @@ function initScene () {
 
 function initObjects () {
     var theta = 0;
-    var x, y;
 
-    for(i=0; i<10000; i+=50)
+    for(var i=0; i<10000; i+=50)
     {
-        let position = spline.getPoint(i / 10000);
-        x = radiansToDegrees(Math.sin(theta)) * radius;
-        y = radiansToDegrees(Math.cos(theta)) * radius;
-        x += position.x;
-        y += position.y;
+        let position = SPLINE.getPositionOnSplineRadius(spline, 10000, i, theta, radius);
+
+        fbxLoader.load(fbxModelPath + "VinylRecord.fbx", function(object) {
+            object.position.set(position.x, position.y, position.z);
+            scene.add(object);
+        });
 
         // create a block object around spline
-        let geometry = new THREE.BoxGeometry( 1, 1, 1 );
-        let material = new THREE.MeshBasicMaterial( {color: 0xffffff} );
-        let cube = new THREE.Mesh( geometry, material );
-        cube.position.set(x, y, position.z);
-        scene.add( cube );
+        // let geometry = new THREE.BoxGeometry( 1, 1, 1 );
+        // let material = new THREE.MeshBasicMaterial( {color: 0xffffff} );
+        // let cube = new THREE.Mesh( geometry, material );
+        // cube.position.set(position.x, position.y, position.z);
+        // scene.add( cube );
 
         theta += 30;
     }
 }
-
-function radiansToDegrees(radians) { return radians * Math.PI / 180; }
 
 function addEventListeners() {
     document.addEventListener('mousemove', onDocumentMouseMove, false);
@@ -81,9 +84,12 @@ var target = new THREE.Vector3();
 var windowHalfX = window.innerWidth / 2;
 var windowHalfY = window.innerHeight / 2;
 
+var fbxLoader = new FBXLoader();
+var fbxModelPath = "../models/fbx/";
+
 initScene();
 addEventListeners();
-spline = createSpline();
+spline = SPLINE.createSpline();
 initObjects();
 
 var position = spline.getPoint(0);
