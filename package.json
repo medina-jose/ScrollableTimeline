@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/medina-jose/ScrollableTimeline#readme",
   "dependencies": {
+    "disconnect": "^1.2.1",
     "express": "^4.17.1",
     "express-generator": "^4.16.1",
     "three": "^0.110.0"
