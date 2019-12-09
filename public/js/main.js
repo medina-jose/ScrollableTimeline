@@ -2,6 +2,8 @@ import * as THREE from './three/three.module.js';
 import { FBXLoader } from "./three/FBXLoader.js";
 import * as SPLINE from "./spline.js";
 import * as MATHUTIL from "./mathUtil.js";
+import * as Release from "./release.js";
+import * as API from "./ui/api.js";
 
 function initScene () {
     scene = new THREE.Scene();
@@ -18,6 +20,100 @@ function initScene () {
 
     // var gridHelper = new THREE.GridHelper( 1000, 50 );
     // scene.add( gridHelper );
+}
+
+function addRelease (json) {
+    var release = Release(json);
+
+    // extend length of spline by a fixed amount
+    var position;
+    if(splinePoints.length <= 0) { position = splinePoints.add(new THREE.Vector3(0, 100, 0)); }
+    else {
+        // get z position of last point in spline
+        // make new spline point an extension of that
+        var lastPoint = splinePoints[splinePoints.length - 1];
+        position = splinePoints.push(new THREE.Vector3(0, 100, lastPoint.z + 100));
+    }
+
+    var plane = generateReleasePlane(release.imagePath, position);
+    if(plane == null) { return null; }
+
+    release.object = plane;
+    scene.add(plane);
+    return release;
+}
+
+function getRelease(masterReleaseId) {
+    // generate request for get release endpoint
+    // get and return body of result
+    return {};
+}
+
+function generateReleasePlane(texturePath, position) {
+    if(position == null) { return null; }
+
+    var texture, material, plane;
+    texture = THREE.ImageUtils.loadTexture(texturePath);
+    // TODO: if texture is null then use default release texture
+    // get a default image and load that
+    material = new THREE.MeshLambertMaterial({ map: texture });
+    plane = new THREE.Mesh(new THREE.PlaneGeometry(defaultPlaneSize.x, defaultPlaneSize.y), material);
+
+    plane.position.set(position.x, position.y, position.z);
+    // TODO: randomize initial plane rotation
+    plane.callback = function () {
+        mode = ViewMode.SingleRelease;
+        transitioning = true;
+        singleRelease = this;
+        this.rotation.set(0, Math.PI, 0);
+    }
+
+    return plane;
+}
+
+
+// the return from discogs is assumed to be sorted by year
+function getArtistReleaseIds(artistId) {
+    // construct request
+    // get response from endpoint
+    // loop through releases to get master ids
+    // get release for each master id
+    return [];
+}
+
+function getArtistId(artistName) {
+    // construct request for get artist id
+    // return id
+    return 1;
+}
+
+function generateTimeline(artistName) {
+    var artistId = getArtistId(); // search for artist
+    var masterReleaseIds = getArtistReleaseIds(artistId); // request releases by artist
+
+    // for each release
+    // generate object to be seen on timeline
+    var releaseJSON;
+    var release;
+    masterReleaseIds.forEach((masterReleaseId) => {
+        releaseJSON = getRelease(masterReleaseId);
+        release = addRelease(releaseJSON);
+        if(release != null) { releases.push(release);}      
+    });
+
+    // calculate length of each decade on timeline based on the number of release in decade
+    // what is an efficient way to get year
+    var decade;
+    releases.forEach((release) => {
+        decade = release.getDecade();
+        switch(decade) {
+            case Decade.NineteenHundreds: {
+                break;
+            }
+        }
+    });
+
+    
 }
 
 function initObjects () {
@@ -160,6 +256,18 @@ var raycaster = new THREE.Raycaster();
 var mode = ViewMode.Timeline;
 var transitioning = false;
 
+var omega = 0;
+var splinePoints = [];
+var defaultPlaneSize = new THREE.Vector2(20, 20);
+var testArtistId = "Herbie Hancock";
+var releases = [];
+
+const Decade = Release.Decade;
+var releaseDict = [
+
+]
+
+API.getArtistId("Herbie Hancock");
 initScene();
 addEventListeners();
 spline = SPLINE.createSpline();
