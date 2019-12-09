@@ -3,7 +3,11 @@ const discogs = require("disconnect").Client;
 const db = new discogs({userToken: USER_TOKEN}).database();
 
 async function getArtistId(req, res) {
-    const query = { "artist": req.params.artistName };
+    // const query = JSON.parse(req.body);
+    const words = req.query.artistName.split("+");
+    var artist = "";
+    words.forEach((word) => { artist += word; });
+    const query = { "artist": artist };
 
     try {
         const response = await db.search(query);

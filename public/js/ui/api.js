@@ -1,7 +1,8 @@
 // this is the frontend implementation of all the necessary endpoints
 
 export function getArtistId(artistName) {
-    const url = "localhost:3000/api/artist/?artistName=" + artistName;
+    const url = "http://localhost:3000/api/artist?artistName=" + artistName;
+    // const body = { "artist": artistName };
     var request = new XMLHttpRequest();
     request.onreadystatechange = function () {
         if(this.status == 200) {

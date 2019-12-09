@@ -259,7 +259,7 @@ var transitioning = false;
 var omega = 0;
 var splinePoints = [];
 var defaultPlaneSize = new THREE.Vector2(20, 20);
-var testArtistId = "Herbie Hancock";
+var testArtistId = "Herbie+Hancock";
 var releases = [];
 
 const Decade = Release.Decade;
@@ -267,7 +267,7 @@ var releaseDict = [
 
 ]
 
-API.getArtistId("Herbie Hancock");
+API.getArtistId(testArtistId);
 initScene();
 addEventListeners();
 spline = SPLINE.createSpline();
