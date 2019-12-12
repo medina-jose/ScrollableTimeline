@@ -3,29 +3,38 @@ const discogs = require("disconnect").Client;
 const db = new discogs({userToken: USER_TOKEN}).database();
 
 async function getArtistId(req, res) {
-    // const query = JSON.parse(req.body);
-    const words = req.query.artistName.split("+");
-    var artist = "";
-    words.forEach((word) => { artist += word; });
-    const query = { "artist": artist };
+    const artist = req.query.artistName;
+    // const words = req.query.artistName.split("+");
+    // var artist = "";
+    // words.forEach((word) => { artist += word; });
+    const query = { "query": artist, "type": "artist", "per_page": 100 };
 
     try {
         const response = await db.search(query);
-        // return id of first object in results array
-        return response;
+        if(response.results == null) { return null; }
+        else if(response.results.length > 0) { return response.results[0].id }
     }
     catch (err) {
         console.log(err);
         return null;
     }
+
+    return null;
 }
 
 async function getArtistReleaseIds(req, res) {
-    const query = { "artist_id": req.body.artistId, "sort": "year" }
+    const params = { "sort": "year", "sort_order": "asc", "per_page": 100};
+    const artistId = req.query.artistId;
 
     try {
-        // get response with json that contains main release ids
-        return res;
+        const response = await db.getArtistReleases(artistId, params);
+        var artistReleaseIds = [];
+        if(response.releases != null) {
+            response.releases.forEach((release) => {
+               artistReleaseIds.push(release.id); 
+            });
+        }
+        return artistReleaseIds;
     }
     catch {
         console.log(err);

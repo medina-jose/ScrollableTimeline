@@ -22,8 +22,13 @@ app.get('/', function (req, res) {
 });
 
 app.get('/api/artist', async function(req, res) {
-    const response = await discogs.getArtistId(req, res);
-    res.json(response);
+    const artistId = await discogs.getArtistId(req, res);
+    res.json(artistId);
+});
+
+app.get('/api/artistReleases', async function(req, res) {
+  const releaseIds = await discogs.getArtistReleaseIds(req, res);
+  res.json(releaseIds);
 });
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));

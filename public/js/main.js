@@ -267,7 +267,23 @@ var releaseDict = [
 
 ]
 
-API.getArtistId(testArtistId);
+async function apiTest() {
+    var artistIdPromise = API.getArtistId(testArtistId)
+    artistIdPromise.then(function(artistId){
+        var releaseIdsPromise = API.getArtistReleaseIds(artistId);
+        releaseIdsPromise.then(function(releaseIds) {
+            console.log(releaseIds);
+        })
+        .catch(function(err) {
+            console.log(err);
+        });
+    })
+    .catch(function(err){
+        console.log(err);
+    });
+}
+
+apiTest();
 initScene();
 addEventListeners();
 spline = SPLINE.createSpline();
