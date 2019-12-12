@@ -72,3 +72,7 @@ export function getRelease(releaseId) {
         request.send();
     })
 }
+
+export function getReleaseImage(resourceUrl) {
+    
+}

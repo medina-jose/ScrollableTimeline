@@ -1,18 +1,11 @@
 export class Release {
-    Release(artist, year, genres, tracks, imagePath, title) {
-        this.artist = artist
-        this.year = year;
-        this.genres = genres;
-        this.tracks = tracks;
-        this.imagePath = imagePath;
-        this.title = title;
-    }  
-    Release(json) {
-        this.imagePath = json.images[0].uri;
+    constructor(json) {
+        this.imagePath = json.imagePath;
         this.genres = json.genres;
         this.title = json.title;
         this.year = json.year;
         this.tracklist = json.tracklist;
+        this.id = json.id;
     }
 
     getDecade() {
@@ -22,6 +15,8 @@ export class Release {
         });
         return Decade.Unknown;
     }
+
+    getImagePath () { return this.imagePath; }
 }
 
 export const Decade = {

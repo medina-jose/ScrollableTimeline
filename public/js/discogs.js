@@ -1,6 +1,7 @@
 const USER_TOKEN = "afVHXPGTwOFYJgxfaEJlyKtdRVjsdiSiaKRozbvP"
 const discogs = require("disconnect").Client;
 const db = new discogs({userToken: USER_TOKEN}).database();
+const fs = require('fs');
 
 async function getArtistId(req, res) {
     const artist = req.query.artistName;
@@ -70,12 +71,25 @@ async function getRelease(req, res) {
     try {
         const response = await db.getMaster(releaseId)
         if(response == null) { return null; }
+        getImage(response.images[0].resource_url, releaseId);
+        response.imagePath = '../images/' + releaseId + '.jpg';
         return response;
     }
     catch (err) {
         console.log(err);
         return null;
     }
+}
+
+async function getImage(url, releaseId) {
+    const filename =  __dirname + '/../images/' + releaseId + '.jpg';
+
+    db.getImage(url, function(err, data) {
+        fs.writeFile(filename, data, 'binary', function(err) {
+            console.log(err);
+            console.log("Image save at " + filename);
+        });
+    });
 }
 
 function timeout(ms) {
