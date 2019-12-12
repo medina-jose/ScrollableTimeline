@@ -22,71 +22,6 @@ function initScene () {
     // scene.add( gridHelper );
 }
 
-function addRelease (json) {
-    var release = Release(json);
-
-    // extend length of spline by a fixed amount
-    var position;
-    if(splinePoints.length <= 0) { position = splinePoints.add(new THREE.Vector3(0, 100, 0)); }
-    else {
-        // get z position of last point in spline
-        // make new spline point an extension of that
-        var lastPoint = splinePoints[splinePoints.length - 1];
-        position = splinePoints.push(new THREE.Vector3(0, 100, lastPoint.z + 100));
-    }
-
-    var plane = generateReleasePlane(release.imagePath, position);
-    if(plane == null) { return null; }
-
-    release.object = plane;
-    scene.add(plane);
-    return release;
-}
-
-function getRelease(masterReleaseId) {
-    // generate request for get release endpoint
-    // get and return body of result
-    return {};
-}
-
-function generateReleasePlane(texturePath, position) {
-    if(position == null) { return null; }
-
-    var texture, material, plane;
-    texture = THREE.ImageUtils.loadTexture(texturePath);
-    // TODO: if texture is null then use default release texture
-    // get a default image and load that
-    material = new THREE.MeshLambertMaterial({ map: texture });
-    plane = new THREE.Mesh(new THREE.PlaneGeometry(defaultPlaneSize.x, defaultPlaneSize.y), material);
-
-    plane.position.set(position.x, position.y, position.z);
-    // TODO: randomize initial plane rotation
-    plane.callback = function () {
-        mode = ViewMode.SingleRelease;
-        transitioning = true;
-        singleRelease = this;
-        this.rotation.set(0, Math.PI, 0);
-    }
-
-    return plane;
-}
-
-
-// the return from discogs is assumed to be sorted by year
-function getArtistReleaseIds(artistId) {
-    // construct request
-    // get response from endpoint
-    // loop through releases to get master ids
-    // get release for each master id
-    return [];
-}
-
-function getArtistId(artistName) {
-    // construct request for get artist id
-    // return id
-    return 1;
-}
-
 function generateTimeline(artistName) {
     var artistId = getArtistId(); // search for artist
     var masterReleaseIds = getArtistReleaseIds(artistId); // request releases by artist
@@ -112,9 +47,87 @@ function generateTimeline(artistName) {
             }
         }
     });
-
-    
 }
+
+async function generateTimeline() {
+    var artistIdPromise = API.getArtistId(testArtist)
+    artistIdPromise.then(function(artistId){
+        var releaseIdsPromise = API.getArtistReleaseIds(artistId);
+        releaseIdsPromise.then(function(releaseIds) {
+            getReleases(releaseIds);
+        })
+        .catch(function(err) {
+            console.log(err);
+        });
+    })
+    .catch(function(err){
+        console.log(err);
+    });
+}
+
+function getReleases(releaseIds) {
+    var allReleases  = [];
+    releaseIds.reduce( (accumulator, currentValue, index) => 
+        accumulator.then(releases => 
+            API.getRelease(currentValue).then(release => allReleases.push(release))
+        ),
+        Promise.resolve([])).then(results => {
+            console.log(allReleases);
+            var release;
+            allReleases.forEach((releaseJSON) => {
+                addRelease(releaseJSON);
+            });
+        });
+}
+
+
+function addRelease (json) {
+    var release = Release(json);
+
+    // extend length of spline by a fixed amount
+    var position;
+    if(splinePoints.length <= 0) { position = splinePoints.add(new THREE.Vector3(0, 100, 0)); }
+    else {
+        // get z position of last point in spline
+        // make new spline point an extension of that
+        var lastPoint = splinePoints[splinePoints.length - 1];
+        position = splinePoints.push(new THREE.Vector3(0, 100, lastPoint.z + 100));
+    }
+
+    var plane = generateReleasePlane(release.imagePath, position);
+    if(plane == null) { return null; }
+
+    release.object = plane;
+    scene.add(plane);
+    return release;
+}
+
+function generateReleasePlane(texturePath, position) {
+    if(position == null) { return null; }
+
+    var texture, material, plane;
+    texture = THREE.ImageUtils.loadTexture(texturePath);
+    // TODO: if texture is null then use default release texture
+    // get a default image and load that
+    material = new THREE.MeshLambertMaterial({ map: texture });
+    plane = new THREE.Mesh(new THREE.PlaneGeometry(defaultPlaneSize.x, defaultPlaneSize.y), material);
+
+    plane.position.set(position.x, position.y, position.z);
+    plane.rotation.y = getRandom(0, 2*Math.PI);
+    plane.callback = function () {
+        mode = ViewMode.SingleRelease;
+        transitioning = true;
+        singleRelease = this;
+        this.rotation.set(0, Math.PI, 0);
+    }
+
+    return plane;
+}
+
+function getRandom(min, max) {
+    return Math.random() * (max - min) + min;
+}
+
 
 function initObjects () {
     var theta = 0;
@@ -259,7 +272,7 @@ var transitioning = false;
 var omega = 0;
 var splinePoints = [];
 var defaultPlaneSize = new THREE.Vector2(20, 20);
-var testArtistId = "Herbie+Hancock";
+var testArtist = "The+Strokes";
 var releases = [];
 
 const Decade = Release.Decade;
@@ -267,23 +280,7 @@ var releaseDict = [
 
 ]
 
-async function apiTest() {
-    var artistIdPromise = API.getArtistId(testArtistId)
-    artistIdPromise.then(function(artistId){
-        var releaseIdsPromise = API.getArtistReleaseIds(artistId);
-        releaseIdsPromise.then(function(releaseIds) {
-            console.log(releaseIds);
-        })
-        .catch(function(err) {
-            console.log(err);
-        });
-    })
-    .catch(function(err){
-        console.log(err);
-    });
-}
-
-apiTest();
+generateTimeline();
 initScene();
 addEventListeners();
 spline = SPLINE.createSpline();

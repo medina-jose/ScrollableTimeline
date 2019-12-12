@@ -8,14 +8,17 @@ export class Release {
         this.title = title;
     }  
     Release(json) {
-
+        this.imagePath = json.images[0].uri;
+        this.genres = json.genres;
+        this.title = json.title;
+        this.year = json.year;
+        this.tracklist = json.tracklist;
     }
 
     getDecade() {
         // parse this from the date that comes back from the json
-        var year = 1995;
         Decade.forEach((decade) => {
-            if(year >= decade.min && year <= decade.max) { return decade; }
+            if(this.year >= decade.min && this.year <= decade.max) { return decade; }
         });
         return Decade.Unknown;
     }

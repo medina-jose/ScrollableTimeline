@@ -31,4 +31,9 @@ app.get('/api/artistReleases', async function(req, res) {
   res.json(releaseIds);
 });
 
+app.get('/api/release', async function(req, res) {
+  const release = await discogs.getRelease(req, res);
+  res.json(release);
+});
+
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
