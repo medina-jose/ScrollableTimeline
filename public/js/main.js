@@ -79,8 +79,8 @@ function update () {
 //     });
 // }
 
-async function generateTimeline() {
-    var artistIdPromise = API.getArtistId(testArtist)
+async function generateTimeline(artistName) {
+    var artistIdPromise = API.getArtistId(artistName)
     artistIdPromise.then(function(artistId){
         var releaseIdsPromise = API.getArtistReleaseIds(artistId);
         releaseIdsPromise.then(function(releaseIds) {
@@ -93,6 +93,11 @@ async function generateTimeline() {
     .catch(function(err){
         console.log(err);
     });
+}
+
+function generateTimelineWrapper() {
+    var input = document.getElementById("input");
+    if(input != null) { generateTimeline(input.value); }
 }
 
 function getReleases(releaseIds) {
@@ -158,7 +163,7 @@ function generateReleasePlane(texturePath, position) {
     plane = new THREE.Mesh(new THREE.PlaneGeometry(defaultPlaneSize.x, defaultPlaneSize.y), material);
     plane.material.side = THREE.DoubleSide;
     plane.position.set(position.x, position.y, position.z);
-    plane.rotation.y = getRandom(0, 2*Math.PI);
+    plane.rotation.y = MATHUTIL.getRandom(0, 2*Math.PI);
     plane.callback = function () {
         mode = ViewMode.SingleRelease;
         transitioning = true;
@@ -167,10 +172,6 @@ function generateReleasePlane(texturePath, position) {
     }
 
     return plane;
-}
-
-function getRandom(min, max) {
-    return Math.random() * (max - min) + min;
 }
 
 
@@ -226,6 +227,11 @@ function addEventListeners() {
     document.addEventListener('mousemove', onDocumentMouseMove, false);
     window.addEventListener('wheel', onDocumentMouseScroll, false);
     window.addEventListener('click', onDocumentMouseDown, false);
+
+    // search button listener
+    var searchButton = document.getElementById("searchButton");
+    var input = document.getElementById("input");
+    searchButton.addEventListener("click", generateTimelineWrapper);
 }
 
 function onDocumentMouseMove(event) {
@@ -282,7 +288,6 @@ var raycaster = new THREE.Raycaster();
 var mode = ViewMode.Timeline;
 var transitioning = false;
 
-var omega = 0;
 var splinePoints = [];
 var defaultPlaneSize = new THREE.Vector2(20, 20);
 var testArtist = "The+Strokes";
@@ -296,9 +301,9 @@ var loading = true;
 var lerpColor = new THREE.Color(0, 198, 185);
 var light;
 
-light = initScene();
+initScene();
 addEventListeners();
-generateTimeline();
+generateTimeline(testArtist);
 // spline = SPLINE.generateSpline(splinePoints);
 // initObjects();
 
