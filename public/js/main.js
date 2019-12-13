@@ -1,5 +1,7 @@
 import * as THREE from './three/three.module.js';
 import { FBXLoader } from "./three/FBXLoader.js";
+import { CSS2DRenderer, CSS2DObject } from './three/CSS2DRenderer.js';
+import { CSS3DRenderer, CSS3DObject } from './three/CSS3DRenderer.js';
 import * as SPLINE from "./spline.js";
 import * as MATHUTIL from "./mathUtil.js";
 import {Release} from "./release.js";
@@ -16,14 +18,14 @@ const ViewMode = {
 const Decade = Release.Decade;
 
 // scene 
-var scene, camera, renderer;
+var scene, camera, renderer, cssRenderer;
 
 // timeline 
 var spline;
+var lerpSpline = [];
 var releases = [];
 var releaseObjects = [];
 var splinePoints = [];
-var textures = [];
 
 // default state
 var camPosIndex = 0;
@@ -40,8 +42,13 @@ var raycaster = new THREE.Raycaster();
 var fbxLoader = new FBXLoader();
 var fbxModelPath = "../models/fbx/";
 
+// css
+var titleDiv, yearDiv, generesDiv;
+var title, year, generes;
+
 // other
 var singleRelease;
+var omega = 0;
 var mode = ViewMode.Timeline;
 var transitioning = false;
 var defaultPlaneSize = new THREE.Vector2(20, 20);
@@ -54,9 +61,16 @@ function initScene () {
     scene = new THREE.Scene();
     scene.background = new THREE.Color( 0x988989 );
     camera = new THREE.PerspectiveCamera(80, window.innerWidth/window.innerHeight, .1, 200);
+
     renderer = new THREE.WebGLRenderer();
     renderer.setSize(window.innerWidth, window.innerHeight);
     document.body.appendChild(renderer.domElement);
+
+    cssRenderer = new CSS2DRenderer();
+    cssRenderer.setSize( window.innerWidth, window.innerHeight );
+    cssRenderer.domElement.style.position = 'absolute';
+    cssRenderer.domElement.style.top = 0;
+    document.body.appendChild( cssRenderer.domElement );
 
     var light = new THREE.HemisphereLight( 0xffffff, 0x444444 );
     light.position.set( 0, 200, 0 );
@@ -67,8 +81,8 @@ function initScene () {
 
 function update () {
     renderer.render(scene, camera);
+    cssRenderer.render(scene, camera);
     requestAnimationFrame( update );
-    // light.groundColor = Color.lerpColor()
 
     if(loading == true) { return; }
 
@@ -84,45 +98,30 @@ function update () {
         releaseObjects.forEach((recordObject) => {
             recordObject.rotation.y += MATHUTIL.degreesToRadians(.0001);
         });
+
+        // look at mouse position with easing
+        target.x = -mouseX * .03;
+        target.y = -mouseY * .03;
+        target.z = camera.position.z + 180;
+        camera.lookAt(target);
     }
-    else if (transitioning == true && singleRelease != null) {
-        camera.position.sub(singleRelease.position).setLength(30).add(singleRelease.position);
-        transitioning = false;
+    else if (singleRelease != null) {
+        if(omega > 1 || omega < 0) { 
+            transitioning = false; 
+            omega = MATHUTIL.clamp(omega, 0, 1);
+        }
+
+        let position = lerpSpline.getPoint(omega);
+        camera.position.set(position.x, position.y, position.z);
+
+        if(transitioning){
+            camera.lookAt(singleRelease.position);
+            omega += mode == ViewMode.SingleRelease ? .005 : -.005;
+        }
+        // camera.position.sub(singleRelease.position).setLength(30).add(singleRelease.position);
     }
    
-    // look at mouse position with easing
-    target.x = -mouseX * .03;
-    target.y = -mouseY * .03;
-    target.z = camera.position.z + 180;
-    camera.lookAt(target);
 }
-
-// function generateTimeline(artistName) {
-//     var artistId = getArtistId(); // search for artist
-//     var masterReleaseIds = getArtistReleaseIds(artistId); // request releases by artist
-
-//     // for each release
-//     // generate object to be seen on timeline
-//     var releaseJSON;
-//     var release;
-//     masterReleaseIds.forEach((masterReleaseId) => {
-//         releaseJSON = getRelease(masterReleaseId);
-//         release = addRelease(releaseJSON);
-//         if(release != null) { releases.push(release);}      
-//     });
-
-//     // calculate length of each decade on timeline based on the number of release in decade
-//     // what is an efficient way to get year
-//     var decade;
-//     releases.forEach((release) => {
-//         decade = release.getDecade();
-//         switch(decade) {
-//             case Decade.NineteenHundreds: {
-//                 break;
-//             }
-//         }
-//     });
-// }
 
 async function generateTimeline(artistName) {
     loading = true;
@@ -190,8 +189,7 @@ function getReleases(releaseIds) {
                 let release = releases[i];
                 let alpha = i / releases.length;
                 let position = SPLINE.getPositionOnSplineRadius(spline, spline.points[spline.points.length -1].z, alpha, theta, RADIUS);
-                // let position = splinePoints[i];
-                release.object.position.set(position.x, position.y, position.z);
+                release.object.position.set(position.x*1.3, position.y, position.z);
                 theta += 30;
             }
             loading = false;
@@ -223,6 +221,34 @@ function addRelease (json) {
     release.object = plane;
     release.texture = texture;
 
+    plane.callback = function () {
+        mode = ViewMode.SingleRelease;
+        transitioning = true;
+        singleRelease = this;
+        omega = 0;
+        this.rotation.set(0, Math.PI, 0);
+        const startPosition = camera.position;
+        // let endPosition = startPosition.clone().sub(this.position).setLength(50).add(this.position);
+        let endPosition = startPosition.clone();
+        endPosition.x -= this.position.x;
+        endPosition.y -= this.position.y;
+        endPosition.z -= this.position.z;
+        endPosition.setLength(30);
+        endPosition.x += this.position.x;
+        endPosition.y += this.position.y;
+        endPosition.z += this.position.z;
+        lerpSpline = SPLINE.generateSpline([startPosition, endPosition]);
+
+        var release;
+        for(var i=0; i<releases.length; i++) {
+            release = releases[i];
+            if(release.object == this) {
+                generateSingleReleaseData(release);
+                break;
+            }
+        }
+    }
+
     scene.add(plane);
     return release;
 }
@@ -237,73 +263,52 @@ function generateReleasePlane(texture, position) {
     plane.material.side = THREE.DoubleSide;
     plane.position.set(position.x, position.y, position.z);
     plane.rotation.y = MATHUTIL.getRandom(0, 2*Math.PI);
-    plane.callback = function () {
-        mode = ViewMode.SingleRelease;
-        transitioning = true;
-        singleRelease = this;
-        this.rotation.set(0, Math.PI, 0);
-    }
-
     return plane;
 }
 
+function generateSingleReleaseData(release) {
+    titleDiv = document.createElement('div');
+    titleDiv.textContent = release.getTitle();
+    titleDiv.className = "label";
+    title = new CSS2DObject(titleDiv);
+    title.position.set(-30, 5, 0);
+    release.object.add(title);
 
-function initObjects () {
-    var theta = 0;
-    var texture, material, plane
+    yearDiv = document.createElement('div');
+    yearDiv.textContent = release.getYear();
+    yearDiv.className = "label";
+    year = new CSS2DObject(yearDiv);
+    year.position.set(-30, 0, 0);
+    release.object.add(year);
 
-    texture = THREE.ImageUtils.loadTexture("../images/cover.jpg");
-    material = new THREE.MeshLambertMaterial({map: texture});
+    generesDiv = document.createElement('div');
+    var genresText = ""
+    release.getGenres().forEach((genre) => { genresText += genre + " "; });
+    generesDiv.textContent = genresText;
+    generesDiv.className = "label";
+    generes = new CSS2DObject(generesDiv);
+    generes.position.set(-30, -5, 0);
+    release.object.add(generes);
+}
 
-    for(var i=0; i<10000; i+=500)
-    {
-        let position = SPLINE.getPositionOnSplineRadius(spline, 10000, i, theta, RADIUS);
+function destroySingleReleaseData() {
+    titleDiv.textContent = "";
+    yearDiv.textContent = "";
+    generesDiv.textContent = "";
 
-        plane = new THREE.Mesh(new THREE.PlaneGeometry(20, 20), material);
-        plane.material.side = THREE.DoubleSide;
-        plane.position.set(position.x, position.y, position.z);
-        plane.rotation.y = i * 5;
-        plane.callback = function () { 
-            mode = ViewMode.SingleRelease;
-            transitioning = true;
-            singleRelease = this;
-            this.rotation.set(0,Math.PI,0);
-        }
-
-        // fbxLoader.load(fbxModelPath + "VinylRecord.fbx", function(object) {
-        //     object.position.set(position.x, position.y, position.z);
-        //     object.scale.set(.4,.4,.4)
-        //     object.traverse(function(child) {
-        //         if(child instanceof THREE.Mesh) {
-        //             var mesh = child;
-        //             mesh.material.forEach((material) => {
-        //                 if(material.name == "White") {
-        //                     material.map = THREE.ImageUtils.loadTexture("../images/cover.jpg");
-        //                     material.needsUpdate = true;
-        //                 }
-        //             });
-        //         }
-        //     });
-
-        //     releaseObjects.push(object);
-        //     scene.add(object);
-        // });
-
-        releaseObjects.push(plane);
-        scene.add(plane);
-
-        theta += 30;
-    }
+    scene.remove(title);
+    scene.remove(year);
+    scene.remove(generes);
 }
 
 function addEventListeners() {
+    // mouse events
     document.addEventListener('mousemove', onDocumentMouseMove, false);
     window.addEventListener('wheel', onDocumentMouseScroll, false);
     window.addEventListener('click', onDocumentMouseDown, false);
 
-    // search button listener
+    // button events
     var searchButton = document.getElementById("searchButton");
-    var input = document.getElementById("input");
     searchButton.addEventListener("click", generateTimelineWrapper);
 }
 
@@ -323,7 +328,17 @@ function onDocumentMouseDown(event) {
         intersects[0].object.callback();
     }
     else if(!transitioning && mode == ViewMode.SingleRelease) {
+        transitioning = true;
         mode = ViewMode.Timeline;
+        destroySingleReleaseData();
+
+        let position = spline.getPoint(camPosIndex / 10000);
+    
+        // move camera along spline
+        camera.position.x = position.x;
+        camera.position.y = position.y;
+        camera.position.z = position.z + 20;
+
     }
 }
 
@@ -341,3 +356,24 @@ initScene();
 addEventListeners();
 generateTimeline(testArtist);
 update();
+
+
+
+        // fbxLoader.load(fbxModelPath + "VinylRecord.fbx", function(object) {
+        //     object.position.set(position.x, position.y, position.z);
+        //     object.scale.set(.4,.4,.4)
+        //     object.traverse(function(child) {
+        //         if(child instanceof THREE.Mesh) {
+        //             var mesh = child;
+        //             mesh.material.forEach((material) => {
+        //                 if(material.name == "White") {
+        //                     material.map = THREE.ImageUtils.loadTexture("../images/cover.jpg");
+        //                     material.needsUpdate = true;
+        //                 }
+        //             });
+        //         }
+        //     });
+
+        //     releaseObjects.push(object);
+        //     scene.add(object);
+        // });

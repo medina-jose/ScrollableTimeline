@@ -17,6 +17,12 @@ export class Release {
     }
 
     getImagePath () { return this.imagePath; }
+
+    getTitle () { return this.title; }
+
+    getYear() { return this.year; }
+
+    getGenres() { return this.genres;}
 }
 
 export const Decade = {
