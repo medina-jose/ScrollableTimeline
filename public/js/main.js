@@ -5,6 +5,51 @@ import * as MATHUTIL from "./mathUtil.js";
 import {Release} from "./release.js";
 import * as API from "./ui/api.js";
 
+// static varialbles
+const RADIUS = 2000;
+
+// enums
+const ViewMode = {
+    Timeline: "Timeline",
+    SingleRelease: "SingleRelease"
+}
+const Decade = Release.Decade;
+
+// scene 
+var scene, camera, renderer;
+
+// timeline 
+var spline;
+var releases = [];
+var releaseObjects = [];
+var splinePoints = [];
+var textures = [];
+
+// default state
+var camPosIndex = 0;
+
+// controls
+var mouseX = 0, mouseY = 0;
+var target = new THREE.Vector3();
+var windowHalfX = window.innerWidth / 2;
+var windowHalfY = window.innerHeight / 2;
+var raycaster = new THREE.Raycaster();
+
+
+// loaders
+var fbxLoader = new FBXLoader();
+var fbxModelPath = "../models/fbx/";
+
+// other
+var singleRelease;
+var mode = ViewMode.Timeline;
+var transitioning = false;
+var defaultPlaneSize = new THREE.Vector2(20, 20);
+var testArtist = "The+Strokes";
+var loading = true;
+var lerpColor = new THREE.Color(0, 198, 185);
+var light;
+
 function initScene () {
     scene = new THREE.Scene();
     scene.background = new THREE.Color( 0x988989 );
@@ -80,6 +125,7 @@ function update () {
 // }
 
 async function generateTimeline(artistName) {
+    loading = true;
     var artistIdPromise = API.getArtistId(artistName)
     artistIdPromise.then(function(artistId){
         var releaseIdsPromise = API.getArtistReleaseIds(artistId);
@@ -97,7 +143,30 @@ async function generateTimeline(artistName) {
 
 function generateTimelineWrapper() {
     var input = document.getElementById("input");
-    if(input != null) { generateTimeline(input.value); }
+    if(input != null) { 
+        destroyTimeline();
+        generateTimeline(input.value); 
+    }
+}
+
+async function destroyTimeline() {
+    var mesh, geometry, material, texture;
+    releases.forEach((release) => {
+        mesh = release.object;
+        geometry = mesh.geometry;
+        material = mesh.material;
+        texture = release.texture;
+        
+        scene.remove(mesh);
+        geometry.dispose();
+        material.dispose();
+        texture.dispose();
+    })
+
+    spline = null;
+    splinePoints = [];
+    releases = [];
+    releaseObjects = [];
 }
 
 function getReleases(releaseIds) {
@@ -108,7 +177,7 @@ function getReleases(releaseIds) {
         ),
         Promise.resolve([])).then(results => {
             console.log(allReleases);
-            var releases = [];
+            releases = [];
             allReleases.forEach((releaseJSON) => {
                 let release = addRelease(releaseJSON);
                 if(release != null) { releases.push(release); }
@@ -144,22 +213,26 @@ function addRelease (json) {
         position = splinePoints.push(new THREE.Vector3(0, 100, lastPoint.z + 50));
     }
 
-    var plane = generateReleasePlane(release.getImagePath(), position);
+    var texture = THREE.ImageUtils.loadTexture(release.getImagePath());
+    if(texture == null ) { texture =  THREE.ImageUtils.loadTexture("../images/cover.jpg"); }
+
+    var plane = generateReleasePlane(texture, position);
     if(plane == null) { return null; }
 
     releaseObjects.push(plane);
     release.object = plane;
+    release.texture = texture;
+
     scene.add(plane);
     return release;
 }
 
-function generateReleasePlane(texturePath, position) {
+function generateReleasePlane(texture, position) {
     if(position == null) { return null; }
 
-    var texture, material, plane;
-    texture = THREE.ImageUtils.loadTexture(texturePath);
-    if(texture == null ) { texture =  THREE.ImageUtils.loadTexture("../images/cover.jpg"); }
+    var material, plane;
     material = new THREE.MeshLambertMaterial({ map: texture });
+
     plane = new THREE.Mesh(new THREE.PlaneGeometry(defaultPlaneSize.x, defaultPlaneSize.y), material);
     plane.material.side = THREE.DoubleSide;
     plane.position.set(position.x, position.y, position.z);
@@ -263,48 +336,8 @@ function onDocumentMouseScroll(event) {
     else if(camPosIndex < 0) { camPosIndex = 1;}
 }
 
-const RADIUS = 2000;
-const ViewMode = {
-    Timeline: "Timeline",
-    SingleRelease: "SingleRelease"
-}
-
-var scene, camera, renderer;
-var spline;
-var camPosIndex = 0;
-
-var mouseX = 0, mouseY = 0;
-var target = new THREE.Vector3();
-var windowHalfX = window.innerWidth / 2;
-var windowHalfY = window.innerHeight / 2;
-
-var fbxLoader = new FBXLoader();
-var fbxModelPath = "../models/fbx/";
-
-var releaseObjects = [];
-var singleRelease;
-var raycaster = new THREE.Raycaster();
-
-var mode = ViewMode.Timeline;
-var transitioning = false;
-
-var splinePoints = [];
-var defaultPlaneSize = new THREE.Vector2(20, 20);
-var testArtist = "The+Strokes";
-var releases = [];
-
-const Decade = Release.Decade;
-var releaseDict = [
-]
-var loading = true;
-
-var lerpColor = new THREE.Color(0, 198, 185);
-var light;
 
 initScene();
 addEventListeners();
 generateTimeline(testArtist);
-// spline = SPLINE.generateSpline(splinePoints);
-// initObjects();
-
 update();
