@@ -1,12 +1,33 @@
 <html>
 	<head>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 		<title>Scrollable Timeline</title>
 		<style>
 			body { margin: 0; }
 			canvas { width: 100%; height: 100% }
+			
+			#search {
+				position: absolute;
+				top: 25px;
+				left: 10px;
+				width: 20%;
+				padding: 10px;
+				box-sizing: border-box;
+				text-align: left;
+			}
 		</style>
 	</head>
 	<body>
+		<div id="search" class="container"> 
+			<div class="row">
+				<div class="col-8 p-0">
+					<input id="input" type="text" class="form-control" name="artist">
+				</div>
+				<div class="col-4 py-0">
+						<button id="searchButton" class="btn btn-primary">Search</button>
+				</div>
+			</div>
+		</div>
 		<script src="/public/js/mathUtil.js" type="module"></script>
 		<script src="/public/js/spline.js" type="module"></script>
 		<script src="/public/js/ui/api.js" type="module"></script>

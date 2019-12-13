@@ -4,6 +4,7 @@ const baseUrl = "http://localhost:3000"
 
 export function getArtistId(artistName) {
     return new Promise(function(resolve, reject) {
+        artistName.split(' ').join('+') // query cannot accept spaces. Replace with '+' character
         const url = baseUrl + "/api/artist?artistName=" + artistName;
         // const body = { "artist": artistName };
         var request = new XMLHttpRequest();
@@ -74,5 +75,5 @@ export function getRelease(releaseId) {
 }
 
 export function getReleaseImage(resourceUrl) {
-    
+
 }

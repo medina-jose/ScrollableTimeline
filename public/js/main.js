@@ -5,6 +5,51 @@ import * as MATHUTIL from "./mathUtil.js";
 import {Release} from "./release.js";
 import * as API from "./ui/api.js";
 
+// static varialbles
+const RADIUS = 2000;
+
+// enums
+const ViewMode = {
+    Timeline: "Timeline",
+    SingleRelease: "SingleRelease"
+}
+const Decade = Release.Decade;
+
+// scene 
+var scene, camera, renderer;
+
+// timeline 
+var spline;
+var releases = [];
+var releaseObjects = [];
+var splinePoints = [];
+var textures = [];
+
+// default state
+var camPosIndex = 0;
+
+// controls
+var mouseX = 0, mouseY = 0;
+var target = new THREE.Vector3();
+var windowHalfX = window.innerWidth / 2;
+var windowHalfY = window.innerHeight / 2;
+var raycaster = new THREE.Raycaster();
+
+
+// loaders
+var fbxLoader = new FBXLoader();
+var fbxModelPath = "../models/fbx/";
+
+// other
+var singleRelease;
+var mode = ViewMode.Timeline;
+var transitioning = false;
+var defaultPlaneSize = new THREE.Vector2(20, 20);
+var testArtist = "The+Strokes";
+var loading = true;
+var lerpColor = new THREE.Color(0, 198, 185);
+var light;
+
 function initScene () {
     scene = new THREE.Scene();
     scene.background = new THREE.Color( 0x988989 );
@@ -16,10 +61,40 @@ function initScene () {
     var light = new THREE.HemisphereLight( 0xffffff, 0x444444 );
     light.position.set( 0, 200, 0 );
     scene.add( light );
-    
+    return light;
+}
 
-    // var gridHelper = new THREE.GridHelper( 1000, 50 );
-    // scene.add( gridHelper );
+
+function update () {
+    renderer.render(scene, camera);
+    requestAnimationFrame( update );
+    // light.groundColor = Color.lerpColor()
+
+    if(loading == true) { return; }
+
+    if(mode == ViewMode.Timeline) {
+        let position = spline.getPoint(camPosIndex / 10000);
+    
+        // move camera along spline
+        camera.position.x = position.x;
+        camera.position.y = position.y;
+        camera.position.z = position.z + 20;
+
+        // rotate record objects
+        releaseObjects.forEach((recordObject) => {
+            recordObject.rotation.y += MATHUTIL.degreesToRadians(.0001);
+        });
+    }
+    else if (transitioning == true && singleRelease != null) {
+        camera.position.sub(singleRelease.position).setLength(30).add(singleRelease.position);
+        transitioning = false;
+    }
+   
+    // look at mouse position with easing
+    target.x = -mouseX * .03;
+    target.y = -mouseY * .03;
+    target.z = camera.position.z + 180;
+    camera.lookAt(target);
 }
 
 // function generateTimeline(artistName) {
@@ -49,8 +124,9 @@ function initScene () {
 //     });
 // }
 
-async function generateTimeline() {
-    var artistIdPromise = API.getArtistId(testArtist)
+async function generateTimeline(artistName) {
+    loading = true;
+    var artistIdPromise = API.getArtistId(artistName)
     artistIdPromise.then(function(artistId){
         var releaseIdsPromise = API.getArtistReleaseIds(artistId);
         releaseIdsPromise.then(function(releaseIds) {
@@ -65,6 +141,34 @@ async function generateTimeline() {
     });
 }
 
+function generateTimelineWrapper() {
+    var input = document.getElementById("input");
+    if(input != null) { 
+        destroyTimeline();
+        generateTimeline(input.value); 
+    }
+}
+
+async function destroyTimeline() {
+    var mesh, geometry, material, texture;
+    releases.forEach((release) => {
+        mesh = release.object;
+        geometry = mesh.geometry;
+        material = mesh.material;
+        texture = release.texture;
+        
+        scene.remove(mesh);
+        geometry.dispose();
+        material.dispose();
+        texture.dispose();
+    })
+
+    spline = null;
+    splinePoints = [];
+    releases = [];
+    releaseObjects = [];
+}
+
 function getReleases(releaseIds) {
     var allReleases  = [];
     releaseIds.reduce( (accumulator, currentValue, index) => 
@@ -73,10 +177,24 @@ function getReleases(releaseIds) {
         ),
         Promise.resolve([])).then(results => {
             console.log(allReleases);
-            var release;
+            releases = [];
             allReleases.forEach((releaseJSON) => {
-                addRelease(releaseJSON);
+                let release = addRelease(releaseJSON);
+                if(release != null) { releases.push(release); }
             });
+
+            // init timeline 
+            spline = SPLINE.generateSpline(splinePoints);
+            var theta = 0;
+            for(let i=0; i<releases.length; i++) {
+                let release = releases[i];
+                let alpha = i / releases.length;
+                let position = SPLINE.getPositionOnSplineRadius(spline, spline.points[spline.points.length -1].z, alpha, theta, RADIUS);
+                // let position = splinePoints[i];
+                release.object.position.set(position.x, position.y, position.z);
+                theta += 30;
+            }
+            loading = false;
         });
 }
 
@@ -92,28 +210,33 @@ function addRelease (json) {
         // get z position of last point in spline
         // make new spline point an extension of that
         var lastPoint = splinePoints[splinePoints.length - 1];
-        position = splinePoints.push(new THREE.Vector3(0, 100, lastPoint.z + 100));
+        position = splinePoints.push(new THREE.Vector3(0, 100, lastPoint.z + 50));
     }
 
-    var plane = generateReleasePlane(release.getImagePath(), position);
+    var texture = THREE.ImageUtils.loadTexture(release.getImagePath());
+    if(texture == null ) { texture =  THREE.ImageUtils.loadTexture("../images/cover.jpg"); }
+
+    var plane = generateReleasePlane(texture, position);
     if(plane == null) { return null; }
 
+    releaseObjects.push(plane);
     release.object = plane;
+    release.texture = texture;
+
     scene.add(plane);
     return release;
 }
 
-function generateReleasePlane(texturePath, position) {
+function generateReleasePlane(texture, position) {
     if(position == null) { return null; }
 
-    var texture, material, plane;
-    texture = THREE.ImageUtils.loadTexture(texturePath);
-    if(texture == null ) { texture =  THREE.ImageUtils.loadTexture("../images/cover.jpg"); }
+    var material, plane;
     material = new THREE.MeshLambertMaterial({ map: texture });
-    plane = new THREE.Mesh(new THREE.PlaneGeometry(defaultPlaneSize.x, defaultPlaneSize.y), material);
 
+    plane = new THREE.Mesh(new THREE.PlaneGeometry(defaultPlaneSize.x, defaultPlaneSize.y), material);
+    plane.material.side = THREE.DoubleSide;
     plane.position.set(position.x, position.y, position.z);
-    plane.rotation.y = getRandom(0, 2*Math.PI);
+    plane.rotation.y = MATHUTIL.getRandom(0, 2*Math.PI);
     plane.callback = function () {
         mode = ViewMode.SingleRelease;
         transitioning = true;
@@ -122,10 +245,6 @@ function generateReleasePlane(texturePath, position) {
     }
 
     return plane;
-}
-
-function getRandom(min, max) {
-    return Math.random() * (max - min) + min;
 }
 
 
@@ -181,6 +300,11 @@ function addEventListeners() {
     document.addEventListener('mousemove', onDocumentMouseMove, false);
     window.addEventListener('wheel', onDocumentMouseScroll, false);
     window.addEventListener('click', onDocumentMouseDown, false);
+
+    // search button listener
+    var searchButton = document.getElementById("searchButton");
+    var input = document.getElementById("input");
+    searchButton.addEventListener("click", generateTimelineWrapper);
 }
 
 function onDocumentMouseMove(event) {
@@ -213,91 +337,7 @@ function onDocumentMouseScroll(event) {
 }
 
 
-function update () {
-    renderer.render(scene, camera);
-    requestAnimationFrame( update );
-
-    if(mode == ViewMode.Timeline) {
-        let position = spline.getPoint(camPosIndex / 10000);
-  
-        // move camera along spline
-        camera.position.x = position.x;
-        camera.position.y = position.y;
-        camera.position.z = position.z + 10;
-
-        // rotate record objects
-        releaseObjects.forEach((recordObject) => {
-            recordObject.rotation.y += MATHUTIL.degreesToRadians(.0001);
-        });
-    }
-    else if (transitioning == true && singleRelease != null) {
-        camera.position.sub(singleRelease.position).setLength(30).add(singleRelease.position);
-        transitioning = false;
-    }
-   
-    // look at mouse position with easing
-    target.x = -mouseX * .03;
-    target.y = -mouseY * .03;
-    target.z = camera.position.z + 180;
-    camera.lookAt(target);
-
-
-}
-
-const RADIUS = 2000;
-const ViewMode = {
-    Timeline: "Timeline",
-    SingleRelease: "SingleRelease"
-}
-
-var scene, camera, renderer;
-var spline;
-var camPosIndex = 0;
-
-var mouseX = 0, mouseY = 0;
-var target = new THREE.Vector3();
-var windowHalfX = window.innerWidth / 2;
-var windowHalfY = window.innerHeight / 2;
-
-var fbxLoader = new FBXLoader();
-var fbxModelPath = "../models/fbx/";
-
-var releaseObjects = [];
-var singleRelease;
-var raycaster = new THREE.Raycaster();
-
-var mode = ViewMode.Timeline;
-var transitioning = false;
-
-var omega = 0;
-var splinePoints = [];
-var defaultPlaneSize = new THREE.Vector2(20, 20);
-var testArtist = "The+Strokes";
-var releases = [];
-
-const Decade = Release.Decade;
-var releaseDict = [
-
-]
-
-generateTimeline();
 initScene();
 addEventListeners();
-spline = SPLINE.createSpline();
-initObjects();
-
-// tube geometry from spline
-var tubeGeo = new THREE.TubeGeometry(spline, 64, 1, 8);
-var tube = new THREE.Mesh(
-  tubeGeo,
-  new THREE.MeshBasicMaterial( { color: 0xff0000 } )
-);
-scene.add(tube);
-
-// cube geometry
-var geometry = new THREE.BoxGeometry( 1, 1, 1 );
-var material = new THREE.MeshBasicMaterial( {color: 0x00ff00} );
-var cube = new THREE.Mesh( geometry, material );
-scene.add( cube );
-
+generateTimeline(testArtist);
 update();
