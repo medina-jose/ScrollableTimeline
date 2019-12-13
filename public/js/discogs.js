@@ -86,7 +86,7 @@ async function getImage(url, releaseId) {
 
     db.getImage(url, function(err, data) {
         fs.writeFile(filename, data, 'binary', function(err) {
-            console.log(err);
+            if(err != null) { console.log(err);}
             console.log("Image save at " + filename);
         });
     });

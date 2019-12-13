@@ -16,10 +16,40 @@ function initScene () {
     var light = new THREE.HemisphereLight( 0xffffff, 0x444444 );
     light.position.set( 0, 200, 0 );
     scene.add( light );
-    
+    return light;
+}
 
-    // var gridHelper = new THREE.GridHelper( 1000, 50 );
-    // scene.add( gridHelper );
+
+function update () {
+    renderer.render(scene, camera);
+    requestAnimationFrame( update );
+    // light.groundColor = Color.lerpColor()
+
+    if(loading == true) { return; }
+
+    if(mode == ViewMode.Timeline) {
+        let position = spline.getPoint(camPosIndex / 10000);
+    
+        // move camera along spline
+        camera.position.x = position.x;
+        camera.position.y = position.y;
+        camera.position.z = position.z + 20;
+
+        // rotate record objects
+        releaseObjects.forEach((recordObject) => {
+            recordObject.rotation.y += MATHUTIL.degreesToRadians(.0001);
+        });
+    }
+    else if (transitioning == true && singleRelease != null) {
+        camera.position.sub(singleRelease.position).setLength(30).add(singleRelease.position);
+        transitioning = false;
+    }
+   
+    // look at mouse position with easing
+    target.x = -mouseX * .03;
+    target.y = -mouseY * .03;
+    target.z = camera.position.z + 180;
+    camera.lookAt(target);
 }
 
 // function generateTimeline(artistName) {
@@ -73,10 +103,24 @@ function getReleases(releaseIds) {
         ),
         Promise.resolve([])).then(results => {
             console.log(allReleases);
-            var release;
+            var releases = [];
             allReleases.forEach((releaseJSON) => {
-                addRelease(releaseJSON);
+                let release = addRelease(releaseJSON);
+                if(release != null) { releases.push(release); }
             });
+
+            // init timeline 
+            spline = SPLINE.generateSpline(splinePoints);
+            var theta = 0;
+            for(let i=0; i<releases.length; i++) {
+                let release = releases[i];
+                let alpha = i / releases.length;
+                let position = SPLINE.getPositionOnSplineRadius(spline, spline.points[spline.points.length -1].z, alpha, theta, RADIUS);
+                // let position = splinePoints[i];
+                release.object.position.set(position.x, position.y, position.z);
+                theta += 30;
+            }
+            loading = false;
         });
 }
 
@@ -92,12 +136,13 @@ function addRelease (json) {
         // get z position of last point in spline
         // make new spline point an extension of that
         var lastPoint = splinePoints[splinePoints.length - 1];
-        position = splinePoints.push(new THREE.Vector3(0, 100, lastPoint.z + 100));
+        position = splinePoints.push(new THREE.Vector3(0, 100, lastPoint.z + 50));
     }
 
     var plane = generateReleasePlane(release.getImagePath(), position);
     if(plane == null) { return null; }
 
+    releaseObjects.push(plane);
     release.object = plane;
     scene.add(plane);
     return release;
@@ -111,7 +156,7 @@ function generateReleasePlane(texturePath, position) {
     if(texture == null ) { texture =  THREE.ImageUtils.loadTexture("../images/cover.jpg"); }
     material = new THREE.MeshLambertMaterial({ map: texture });
     plane = new THREE.Mesh(new THREE.PlaneGeometry(defaultPlaneSize.x, defaultPlaneSize.y), material);
-
+    plane.material.side = THREE.DoubleSide;
     plane.position.set(position.x, position.y, position.z);
     plane.rotation.y = getRandom(0, 2*Math.PI);
     plane.callback = function () {
@@ -212,38 +257,6 @@ function onDocumentMouseScroll(event) {
     else if(camPosIndex < 0) { camPosIndex = 1;}
 }
 
-
-function update () {
-    renderer.render(scene, camera);
-    requestAnimationFrame( update );
-
-    if(mode == ViewMode.Timeline) {
-        let position = spline.getPoint(camPosIndex / 10000);
-  
-        // move camera along spline
-        camera.position.x = position.x;
-        camera.position.y = position.y;
-        camera.position.z = position.z + 10;
-
-        // rotate record objects
-        releaseObjects.forEach((recordObject) => {
-            recordObject.rotation.y += MATHUTIL.degreesToRadians(.0001);
-        });
-    }
-    else if (transitioning == true && singleRelease != null) {
-        camera.position.sub(singleRelease.position).setLength(30).add(singleRelease.position);
-        transitioning = false;
-    }
-   
-    // look at mouse position with easing
-    target.x = -mouseX * .03;
-    target.y = -mouseY * .03;
-    target.z = camera.position.z + 180;
-    camera.lookAt(target);
-
-
-}
-
 const RADIUS = 2000;
 const ViewMode = {
     Timeline: "Timeline",
@@ -277,27 +290,16 @@ var releases = [];
 
 const Decade = Release.Decade;
 var releaseDict = [
-
 ]
+var loading = true;
 
-generateTimeline();
-initScene();
+var lerpColor = new THREE.Color(0, 198, 185);
+var light;
+
+light = initScene();
 addEventListeners();
-spline = SPLINE.createSpline();
-initObjects();
-
-// tube geometry from spline
-var tubeGeo = new THREE.TubeGeometry(spline, 64, 1, 8);
-var tube = new THREE.Mesh(
-  tubeGeo,
-  new THREE.MeshBasicMaterial( { color: 0xff0000 } )
-);
-scene.add(tube);
-
-// cube geometry
-var geometry = new THREE.BoxGeometry( 1, 1, 1 );
-var material = new THREE.MeshBasicMaterial( {color: 0x00ff00} );
-var cube = new THREE.Mesh( geometry, material );
-scene.add( cube );
+generateTimeline();
+// spline = SPLINE.generateSpline(splinePoints);
+// initObjects();
 
 update();
