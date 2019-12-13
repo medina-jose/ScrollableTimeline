@@ -1,0 +1,2305 @@
+{
+    "pagination": {
+        "per_page": 50,
+        "pages": 53,
+        "page": 1,
+        "urls": {
+            "last": "https://api.discogs.com/database/search?per_page=50&page=53&artist=Herbie+Hancock",
+            "next": "https://api.discogs.com/database/search?per_page=50&page=2&artist=Herbie+Hancock"
+        },
+        "items": 2629
+    },
+    "results": [
+        {
+            "style": [
+                "Fusion",
+                "Jazz-Funk",
+                "Disco"
+            ],
+            "barcode": [
+                "P AL 34907-1G",
+                "P BL 34907-1F",
+                "P AL 34907-1F",
+                "PBL 34907-1K"
+            ],
+            "thumb": "https://img.discogs.com/6BlLh_zF8NJA66EeF35VDy5a4m0=/fit-in/150x150/filters:strip_icc():format(jpeg):mode_rgb():quality(40)/discogs-images/R-527548-1290318469.jpeg.jpg",
+            "uri": "/Herbie-Hancock-Sunlight/master/47901",
+            "title": "Herbie Hancock - Sunlight",
+            "country": "US",
+            "format": [
+                "Vinyl",
+                "LP",
+                "Album"
+            ],
+            "user_data": {
+                "in_collection": false,
+                "in_wantlist": false
+            },
+            "community": {
+                "want": 3064,
+                "have": 4068
+            },
+            "label": [
+                "Columbia",
+                "CBS Inc.",
+                "CBS Inc.",
+                "Columbia Records",
+                "The Automatt",
+                "The Village Recorder",
+                "Different Fur Studios",
+                "The Automatt"
+            ],
+            "cover_image": "https://img.discogs.com/R3ZXIDCevbs9xTFKguE1chBypOA=/fit-in/600x600/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-527548-1290318469.jpeg.jpg",
+            "catno": "JC 34907",
+            "master_url": "https://api.discogs.com/masters/47901",
+            "year": "1978",
+            "genre": [
+                "Electronic",
+                "Jazz",
+                "Funk / Soul"
+            ],
+            "resource_url": "https://api.discogs.com/masters/47901",
+            "master_id": 47901,
+            "type": "master",
+            "id": 47901
+        },
+        {
+            "style": [
+                "Free Jazz",
+                "Fusion"
+            ],
+            "barcode": [
+                "BMI",
+                "S39818",
+                "S39819",
+                "S I WS-1898 39818-A 1A S.G.A2",
+                "I S WS-1898 39819-B 1A S.G. A1",
+                "WS 1898 39818-1 BC",
+                "WS 1898 39818-1 CC",
+                "S I WS-1898 39818-A 1A S.G. A3",
+                "I WS-1898 39819-B 1A S.G. A"
+            ],
+            "thumb": "https://img.discogs.com/rOSD_2wI0g09aOa2m4yhSP7gWqg=/fit-in/150x150/filters:strip_icc():format(jpeg):mode_rgb():quality(40)/discogs-images/R-1307670-1438205565-8075.jpeg.jpg",
+            "uri": "/Herbie-Hancock-Mwandishi/master/47845",
+            "title": "Herbie Hancock - Mwandishi",
+            "country": "US",
+            "format": [
+                "Vinyl",
+                "LP",
+                "Album"
+            ],
+            "user_data": {
+                "in_collection": false,
+                "in_wantlist": false
+            },
+            "community": {
+                "want": 4819,
+                "have": 3343
+            },
+            "label": [
+                "Warner Bros. Records",
+                "Warner Bros. Records Inc.",
+                "Warner Bros. Records Inc.",
+                "Hancock Records, Inc. Production",
+                "Hancock Music",
+                "Fillmore Corporation",
+                "Wally Heider Studios",
+                "Columbia Records Pressing Plant, Santa Maria"
+            ],
+            "cover_image": "https://img.discogs.com/X8SJY7fEUg7dSZ58vlL7iQYnAm0=/fit-in/499x500/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-1307670-1438205565-8075.jpeg.jpg",
+            "catno": "WS 1898",
+            "master_url": "https://api.discogs.com/masters/47845",
+            "year": "1971",
+            "genre": [
+                "Jazz"
+            ],
+            "resource_url": "https://api.discogs.com/masters/47845",
+            "master_id": 47845,
+            "type": "master",
+            "id": 47845
+        },
+        {
+            "style": [
+                "Soul-Jazz",
+                "Instrumental",
+                "Contemporary Jazz"
+            ],
+            "barcode": [
+                "6 02517 44826 1",
+                "BIEM/SABAM",
+                "LC 00383",
+                "Sony DADC [universal Logo] 1744826 25  A00",
+                "IFPI 74K4",
+                "IFPI L555"
+            ],
+            "thumb": "https://img.discogs.com/JNrrnFBX7Z9gxXnXfa2cb7UtuMY=/fit-in/150x150/filters:strip_icc():format(jpeg):mode_rgb():quality(40)/discogs-images/R-13312409-1551887592-4014.jpeg.jpg",
+            "uri": "/Herbie-Hancock-River-The-Joni-Letters/master/163820",
+            "title": "Herbie Hancock - River: The Joni Letters",
+            "country": "Europe",
+            "format": [
+                "CD",
+                "Album"
+            ],
+            "user_data": {
+                "in_collection": false,
+                "in_wantlist": false
+            },
+            "community": {
+                "want": 328,
+                "have": 1741
+            },
+            "label": [
+                "Verve Records",
+                "Universal Music",
+                "The Verve Music Group",
+                "The Verve Music Group",
+                "Avatar Studios",
+                "Ocean Way Recording",
+                "600Feet",
+                "NJP Tonstudio",
+                "Bernie Grundman Mastering",
+                "Market Street",
+                "Crazy Cow Music",
+                "Dee Klein Music",
+                "Miyako Music",
+                "Boosey & Hawkes Music Publishers Ltd",
+                "EMI Mills Music Inc.",
+                "Sony DADC"
+            ],
+            "cover_image": "https://img.discogs.com/kEKXjoQMh46wZFNuwmRMp1DaoiU=/fit-in/600x604/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-13312409-1551887592-4014.jpeg.jpg",
+            "catno": "0602517448261",
+            "master_url": "https://api.discogs.com/masters/163820",
+            "year": "2007",
+            "genre": [
+                "Jazz",
+                "Funk / Soul"
+            ],
+            "resource_url": "https://api.discogs.com/masters/163820",
+            "master_id": 163820,
+            "type": "master",
+            "id": 163820
+        },
+        {
+            "style": [
+                "Trip Hop",
+                "Drum n Bass",
+                "Deep House"
+            ],
+            "barcode": [
+                "5 037300 330150 >"
+            ],
+            "thumb": "https://img.discogs.com/MpQSBLfSFE2gRFKHfrJyYYgaRho=/fit-in/150x150/filters:strip_icc():format(jpeg):mode_rgb():quality(40)/discogs-images/R-86787-1422438246-5272.jpeg.jpg",
+            "uri": "/Herbie-Hancock-The-Essence-Mixes/master/203364",
+            "title": "Herbie Hancock - The Essence (Mixes)",
+            "country": "US",
+            "format": [
+                "CD",
+                "Maxi-Single",
+                "Limited Edition"
+            ],
+            "user_data": {
+                "in_collection": false,
+                "in_wantlist": false
+            },
+            "community": {
+                "want": 689,
+                "have": 1183
+            },
+            "label": [
+                "Transparent Music"
+            ],
+            "cover_image": "https://img.discogs.com/58fnwF7bqXGNeTUm2YmbPXNY-tM=/fit-in/600x507/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-86787-1422438246-5272.jpeg.jpg",
+            "catno": "CD Herbie 1",
+            "master_url": "https://api.discogs.com/masters/203364",
+            "year": "2001",
+            "genre": [
+                "Electronic"
+            ],
+            "resource_url": "https://api.discogs.com/masters/203364",
+            "master_id": 203364,
+            "type": "master",
+            "id": 203364
+        },
+        {
+            "style": [
+                "Electro",
+                "Synth-pop"
+            ],
+            "barcode": [
+                "CI A 4571-1N 7-9-84 DD",
+                "CI A 4571-2N 7-9-84 DD",
+                "CI CBS A 4571-1N",
+                "CI CBS A 4571-2N",
+                "SIAE"
+            ],
+            "thumb": "https://img.discogs.com/o08XmyGpXfJx0ydrXe9nIdUrNnc=/fit-in/150x150/filters:strip_icc():format(jpeg):mode_rgb():quality(40)/discogs-images/R-4393594-1363703423-3143.jpeg.jpg",
+            "uri": "/Herbie-Hancock-Hardrock/master/58474",
+            "title": "Herbie Hancock - Hardrock",
+            "country": "Italy",
+            "format": [
+                "Vinyl",
+                "7\"",
+                "45 RPM"
+            ],
+            "user_data": {
+                "in_collection": false,
+                "in_wantlist": false
+            },
+            "community": {
+                "want": 289,
+                "have": 1203
+            },
+            "label": [
+                "CBS",
+                "CBS Dischi",
+                "CBS Inc.",
+                "CBS Inc.",
+                "Hancock Music",
+                "OAO Music",
+                "CBS"
+            ],
+            "cover_image": "https://img.discogs.com/xFX24O4nvn37BQCs_o5c5HD61PU=/fit-in/594x600/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-4393594-1363703423-3143.jpeg.jpg",
+            "catno": "CBS A 4571",
+            "master_url": "https://api.discogs.com/masters/58474",
+            "year": "1984",
+            "genre": [
+                "Electronic"
+            ],
+            "resource_url": "https://api.discogs.com/masters/58474",
+            "master_id": 58474,
+            "type": "master",
+            "id": 58474
+        },
+        {
+            "style": [
+                "Hard Bop",
+                "Post Bop",
+                "Modal"
+            ],
+            "barcode": [],
+            "thumb": "https://img.discogs.com/rS4_jX9ZZ3AWvMLeUWLIdp-EigU=/fit-in/150x150/filters:strip_icc():format(jpeg):mode_rgb():quality(40)/discogs-images/R-1063260-1408901760-6348.jpeg.jpg",
+            "uri": "/Herbie-Hancock-Herbie-Hancock/master/391703",
+            "title": "Herbie Hancock - Herbie Hancock",
+            "country": "US",
+            "format": [
+                "Vinyl",
+                "LP",
+                "Compilation"
+            ],
+            "user_data": {
+                "in_collection": false,
+                "in_wantlist": false
+            },
+            "community": {
+                "want": 260,
+                "have": 660
+            },
+            "label": [
+                "Blue Note",
+                "The Blue Note Re-Issue Series",
+                "United Artists Music And Records Group, Inc.",
+                "United Artists Music And Records Group, Inc.",
+                "United Artists Music And Records Group, Inc.",
+                "United Artists Music And Records Group, Inc.",
+                "Van Gelder Studio, Englewood Cliffs, New Jersey"
+            ],
+            "cover_image": "https://img.discogs.com/guep3K060uP6DcDqfFH_sjWnkdk=/fit-in/600x600/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-1063260-1408901760-6348.jpeg.jpg",
+            "catno": "BN-LA399-H2",
+            "master_url": "https://api.discogs.com/masters/391703",
+            "year": "1975",
+            "genre": [
+                "Jazz"
+            ],
+            "resource_url": "https://api.discogs.com/masters/391703",
+            "master_id": 391703,
+            "type": "master",
+            "id": 391703
+        },
+        {
+            "style": [
+                "Disco"
+            ],
+            "barcode": [
+                "XSS 168270-1K T1 13",
+                "XSS 168352-1E T1 A"
+            ],
+            "thumb": "https://img.discogs.com/DQBoQ2cIJPAbih1J4VY0ohAOM30=/fit-in/150x150/filters:strip_icc():format(jpeg):mode_rgb():quality(40)/discogs-images/R-358513-1155566065.jpeg.jpg",
+            "uri": "/Herbie-Hancock-Magic-Number/master/163816",
+            "title": "Herbie Hancock - Magic Number",
+            "country": "US",
+            "format": [
+                "Vinyl",
+                "12\"",
+                "33 ⅓ RPM",
+                "Promo"
+            ],
+            "user_data": {
+                "in_collection": false,
+                "in_wantlist": false
+            },
+            "community": {
+                "want": 862,
+                "have": 381
+            },
+            "label": [
+                "Columbia"
+            ],
+            "cover_image": "https://img.discogs.com/KK3j5gwEieSZu7plDmjfaAv-yOQ=/fit-in/500x496/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-358513-1155566065.jpeg.jpg",
+            "catno": "AS 1333",
+            "master_url": "https://api.discogs.com/masters/163816",
+            "year": "1981",
+            "genre": [
+                "Electronic"
+            ],
+            "resource_url": "https://api.discogs.com/masters/163816",
+            "master_id": 163816,
+            "type": "master",
+            "id": 163816
+        },
+        {
+            "style": [],
+            "master_id": 281278,
+            "thumb": "https://img.discogs.com/PJ7kjzFsV953Ig9Hms_A_k6coJY=/fit-in/150x150/filters:strip_icc():format(jpeg):mode_rgb():quality(40)/discogs-images/R-1790170-1297876454.jpeg.jpg",
+            "format": [
+                "Vinyl",
+                "7\""
+            ],
+            "country": "US",
+            "barcode": [],
+            "uri": "/Herbie-Hancock-Watermelon-Man/master/281278",
+            "master_url": "https://api.discogs.com/masters/281278",
+            "user_data": {
+                "in_collection": false,
+                "in_wantlist": false
+            },
+            "genre": [
+                "Jazz"
+            ],
+            "catno": "45-1862",
+            "community": {
+                "want": 454,
+                "have": 83
+            },
+            "cover_image": "https://img.discogs.com/i-QyoqPiFB_HmiO8m-S7G2hl_Ik=/fit-in/462x439/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-1790170-1297876454.jpeg.jpg",
+            "title": "Herbie Hancock - Watermelon Man",
+            "resource_url": "https://api.discogs.com/masters/281278",
+            "label": [
+                "Blue Note"
+            ],
+            "type": "master",
+            "id": 281278
+        },
+        {
+            "style": [
+                "Jazz-Funk",
+                "Fusion",
+                "Contemporary Jazz"
+            ],
+            "barcode": [
+                "0  946 - 3 - 86120 - 2  5",
+                "bel BIEM",
+                "LC0110"
+            ],
+            "thumb": "https://img.discogs.com/2Z60k07Ljuy5KjDaiv7wq_yPjGk=/fit-in/150x150/filters:strip_icc():format(jpeg):mode_rgb():quality(40)/discogs-images/R-8563782-1464116858-5666.jpeg.jpg",
+            "uri": "/Herbie-Hancock-The-Finest-In-Jazz/master/1005352",
+            "title": "Herbie Hancock - The Finest In Jazz",
+            "country": "Europe",
+            "format": [
+                "CD",
+                "Compilation",
+                "Remastered"
+            ],
+            "user_data": {
+                "in_collection": false,
+                "in_wantlist": false
+            },
+            "community": {
+                "want": 3,
+                "have": 15
+            },
+            "label": [
+                "Blue Note",
+                "The Finest In Jazz",
+                "The Blue Note Label Group",
+                "The Blue Note Label Group",
+                "Hancock Music Company",
+                "Unart Music Corp.",
+                "Ron Carter Music"
+            ],
+            "cover_image": "https://img.discogs.com/ajhSWudyD7wSP6huSnl2ULwtNEA=/fit-in/600x600/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-8563782-1464116858-5666.jpeg.jpg",
+            "catno": "0946 3 86120 2 5",
+            "master_url": "https://api.discogs.com/masters/1005352",
+            "year": "2007",
+            "genre": [
+                "Jazz",
+                "Funk / Soul"
+            ],
+            "resource_url": "https://api.discogs.com/masters/1005352",
+            "master_id": 1005352,
+            "type": "master",
+            "id": 1005352
+        },
+        {
+            "style": [],
+            "master_id": 1535498,
+            "thumb": "https://img.discogs.com/IJ-ONG9q8V0e5AomIyqc3i2zcO0=/fit-in/150x150/filters:strip_icc():format(jpeg):mode_rgb():quality(40)/discogs-images/R-12764047-1541493779-7447.jpeg.jpg",
+            "format": [
+                "CD",
+                "Album"
+            ],
+            "country": "Europe",
+            "barcode": [],
+            "uri": "/Herbie-Hancock-Piano-Genius/master/1535498",
+            "master_url": "https://api.discogs.com/masters/1535498",
+            "user_data": {
+                "in_collection": false,
+                "in_wantlist": false
+            },
+            "genre": [
+                "Jazz"
+            ],
+            "catno": "QED076",
+            "community": {
+                "want": 0,
+                "have": 3
+            },
+            "cover_image": "https://img.discogs.com/8hHoONVkVVG6sJCpvCEIdi-7H2E=/fit-in/425x379/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-12764047-1541493779-7447.jpeg.jpg",
+            "title": "Herbie Hancock - Piano Genius",
+            "resource_url": "https://api.discogs.com/masters/1535498",
+            "label": [
+                "QED"
+            ],
+            "type": "master",
+            "id": 1535498
+        },
+        {
+            "style": [
+                "Fusion"
+            ],
+            "barcode": [
+                "5297961901728"
+            ],
+            "thumb": "https://img.discogs.com/_QHZFj9pQCnhs37A3Acpdda5hII=/fit-in/150x150/filters:strip_icc():format(jpeg):mode_rgb():quality(40)/discogs-images/R-7994151-1453111689-4523.jpeg.jpg",
+            "uri": "/Herbie-Hancock-Live-At-The-Boston-Jazz-Workshop/master/1081583",
+            "title": "Herbie Hancock - Live At The Boston Jazz Workshop",
+            "country": "Germany",
+            "format": [
+                "Vinyl",
+                "LP",
+                "Unofficial Release"
+            ],
+            "user_data": {
+                "in_collection": false,
+                "in_wantlist": false
+            },
+            "community": {
+                "want": 28,
+                "have": 64
+            },
+            "label": [
+                "Hi Hat"
+            ],
+            "cover_image": "https://img.discogs.com/p9mRyRU8SujYgMPreSIpszE790M=/fit-in/340x340/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-7994151-1453111689-4523.jpeg.jpg",
+            "catno": "HH2LP017",
+            "master_url": "https://api.discogs.com/masters/1081583",
+            "year": "2015",
+            "genre": [
+                "Jazz"
+            ],
+            "resource_url": "https://api.discogs.com/masters/1081583",
+            "master_id": 1081583,
+            "type": "master",
+            "id": 1081583
+        },
+        {
+            "style": [
+                "Fusion",
+                "Electro",
+                "Funk"
+            ],
+            "barcode": [
+                "BIEM/STEMRA"
+            ],
+            "thumb": "https://img.discogs.com/T2fi7vr1YYjVbuDSb4GzX2t21-Q=/fit-in/150x150/filters:strip_icc():format(jpeg):mode_rgb():quality(40)/discogs-images/R-1760011-1255386344.jpeg.jpg",
+            "uri": "/Herbie-Hancock-People-Are-Changing/master/726215",
+            "title": "Herbie Hancock - People Are Changing",
+            "country": "Europe",
+            "format": [
+                "Vinyl",
+                "12\"",
+                "45 RPM",
+                "Maxi-Single"
+            ],
+            "user_data": {
+                "in_collection": false,
+                "in_wantlist": false
+            },
+            "community": {
+                "want": 28,
+                "have": 58
+            },
+            "label": [
+                "CBS",
+                "CBS",
+                "CBS Inc."
+            ],
+            "cover_image": "https://img.discogs.com/5kBEwZRchcboOWpShCotRsogcJQ=/fit-in/600x600/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-1760011-1255386344.jpeg.jpg",
+            "catno": "CBSA 12.4943",
+            "master_url": "https://api.discogs.com/masters/726215",
+            "year": "1984",
+            "genre": [
+                "Electronic",
+                "Jazz",
+                "Funk / Soul"
+            ],
+            "resource_url": "https://api.discogs.com/masters/726215",
+            "master_id": 726215,
+            "type": "master",
+            "id": 726215
+        },
+        {
+            "style": [],
+            "barcode": [
+                "8 76964 00008 6",
+                "VA 10008.1.A VB01"
+            ],
+            "thumb": "https://img.discogs.com/YRLYTO4BGXC-m8Uzh7J-PoKCaa0=/fit-in/150x150/filters:strip_icc():format(jpeg):mode_rgb():quality(40)/discogs-images/R-4757205-1374540616-2421.jpeg.jpg",
+            "uri": "/Herbie-Hancock-Possibilities/master/578032",
+            "title": "Herbie Hancock - Possibilities",
+            "country": "US",
+            "format": [
+                "DVD",
+                "Album",
+                "DVD-Video",
+                "NTSC"
+            ],
+            "user_data": {
+                "in_collection": false,
+                "in_wantlist": false
+            },
+            "community": {
+                "want": 10,
+                "have": 30
+            },
+            "label": [
+                "Magnolia Home Entertainment",
+                "HDNet Films LLC"
+            ],
+            "cover_image": "https://img.discogs.com/t-xfLvpQ0uJMLCQ5Y_0G7Df4Eiw=/fit-in/423x600/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-4757205-1374540616-2421.jpeg.jpg",
+            "catno": "10008",
+            "master_url": "https://api.discogs.com/masters/578032",
+            "year": "2006",
+            "genre": [
+                "Jazz"
+            ],
+            "resource_url": "https://api.discogs.com/masters/578032",
+            "master_id": 578032,
+            "type": "master",
+            "id": 578032
+        },
+        {
+            "style": [
+                "Future Jazz",
+                "Disco"
+            ],
+            "barcode": [],
+            "thumb": "https://img.discogs.com/kDdjK6DwBvzv_ypDH8XuviWGQPU=/fit-in/150x150/filters:strip_icc():format(jpeg):mode_rgb():quality(40)/discogs-images/R-2140974-1378407625-3795.jpeg.jpg",
+            "uri": "/Herbie-Hancock-The-Fun-Tracks/master/1121833",
+            "title": "Herbie Hancock - The Fun Tracks",
+            "country": "UK",
+            "format": [
+                "Vinyl",
+                "7\"",
+                "45 RPM"
+            ],
+            "user_data": {
+                "in_collection": false,
+                "in_wantlist": false
+            },
+            "community": {
+                "want": 28,
+                "have": 20
+            },
+            "label": [
+                "CBS"
+            ],
+            "cover_image": "https://img.discogs.com/6AG1sQpTbCbfmPk4CAYyOncR-Io=/fit-in/600x619/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-2140974-1378407625-3795.jpeg.jpg",
+            "catno": "CBS A2563",
+            "master_url": "https://api.discogs.com/masters/1121833",
+            "year": "1982",
+            "genre": [
+                "Electronic"
+            ],
+            "resource_url": "https://api.discogs.com/masters/1121833",
+            "master_id": 1121833,
+            "type": "master",
+            "id": 1121833
+        },
+        {
+            "style": [
+                "Electro"
+            ],
+            "barcode": [],
+            "thumb": "https://img.discogs.com/BgHyCCSZmh6gf5-zsWZRyPR5u0A=/fit-in/150x150/filters:strip_icc():format(jpeg):mode_rgb():quality(40)/discogs-images/R-470129-1549925884-6548.jpeg.jpg",
+            "uri": "/Herbie-Hancock-Vibe-Alive/master/122739",
+            "title": "Herbie Hancock - Vibe Alive",
+            "country": "US",
+            "format": [
+                "Vinyl",
+                "12\"",
+                "33 ⅓ RPM",
+                "Single"
+            ],
+            "user_data": {
+                "in_collection": false,
+                "in_wantlist": false
+            },
+            "community": {
+                "want": 160,
+                "have": 685
+            },
+            "label": [
+                "Columbia"
+            ],
+            "cover_image": "https://img.discogs.com/5p5uxAjI2AnwlYFsRlIkisoFOfU=/fit-in/600x592/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-470129-1549925884-6548.jpeg.jpg",
+            "catno": "44 07804",
+            "master_url": "https://api.discogs.com/masters/122739",
+            "year": "1988",
+            "genre": [
+                "Electronic"
+            ],
+            "resource_url": "https://api.discogs.com/masters/122739",
+            "master_id": 122739,
+            "type": "master",
+            "id": 122739
+        },
+        {
+            "style": [
+                "Fusion",
+                "Jazz-Funk",
+                "Soul-Jazz"
+            ],
+            "barcode": [
+                "7 31452 77152 0",
+                "BIEM/MCPS",
+                "LC 0383",
+                "PY 900",
+                "527 715-2 01",
+                "IFPI L001",
+                "IFPI 0118",
+                "MADE IN GERMANY BY PMDC"
+            ],
+            "thumb": "https://img.discogs.com/FzlMLPAAzBGo6Z4t4wowiV8tUSM=/fit-in/150x150/filters:strip_icc():format(jpeg):mode_rgb():quality(40)/discogs-images/R-8555272-1463952149-4191.jpeg.jpg",
+            "uri": "/Herbie-Hancock-The-New-Standard/master/162037",
+            "title": "Herbie Hancock - The New Standard",
+            "country": "UK & Europe",
+            "format": [
+                "CD",
+                "Album"
+            ],
+            "user_data": {
+                "in_collection": false,
+                "in_wantlist": false
+            },
+            "community": {
+                "want": 308,
+                "have": 855
+            },
+            "label": [
+                "Verve Records",
+                "The Verve Group",
+                "PolyGram Records, Inc.",
+                "PolyGram Records, Inc.",
+                "Masterdisk",
+                "Manhattan Center Studios",
+                "Garage Sale Recording"
+            ],
+            "cover_image": "https://img.discogs.com/olncT9eUemqTSgE7L3mnA7FHAiI=/fit-in/600x595/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-8555272-1463952149-4191.jpeg.jpg",
+            "catno": "527 715-2",
+            "master_url": "https://api.discogs.com/masters/162037",
+            "year": "1996",
+            "genre": [
+                "Jazz"
+            ],
+            "resource_url": "https://api.discogs.com/masters/162037",
+            "master_id": 162037,
+            "type": "master",
+            "id": 162037
+        },
+        {
+            "style": [
+                "Electro",
+                "Synth-pop"
+            ],
+            "barcode": [
+                "MCPS/BIEM",
+                "LC 0149",
+                "CB 241"
+            ],
+            "thumb": "https://img.discogs.com/CUoXA2l1UJ6DVV_KpZFm_V7HUY0=/fit-in/150x150/filters:strip_icc():format(jpeg):mode_rgb():quality(40)/discogs-images/R-202720-1299366279.jpeg.jpg",
+            "uri": "/Herbie-Hancock-Future-Shock/master/163830",
+            "title": "Herbie Hancock - Future Shock",
+            "country": "UK",
+            "format": [
+                "Vinyl",
+                "12\"",
+                "45 RPM",
+                "Single"
+            ],
+            "user_data": {
+                "in_collection": false,
+                "in_wantlist": false
+            },
+            "community": {
+                "want": 101,
+                "have": 505
+            },
+            "label": [
+                "CBS",
+                "The Automatt"
+            ],
+            "cover_image": "https://img.discogs.com/6vO9iucu077ojHih4p9ra6J7HQs=/fit-in/600x584/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-202720-1299366279.jpeg.jpg",
+            "catno": "TA 4075",
+            "master_url": "https://api.discogs.com/masters/163830",
+            "year": "1983",
+            "genre": [
+                "Electronic"
+            ],
+            "resource_url": "https://api.discogs.com/masters/163830",
+            "master_id": 163830,
+            "type": "master",
+            "id": 163830
+        },
+        {
+            "style": [
+                "Disco"
+            ],
+            "barcode": [
+                "LC 0149",
+                "MCPS",
+                "BIEM",
+                "CBS A.2222.A1",
+                "CBS A.2222.B1"
+            ],
+            "thumb": "https://img.discogs.com/cM8OUAc7XX2wNJOYIJzWzagPb8M=/fit-in/150x150/filters:strip_icc():format(jpeg):mode_rgb():quality(40)/discogs-images/R-9490676-1554680679-8931.jpeg.jpg",
+            "uri": "/Herbie-Hancock-Lite-Me-Up-Satisfied-With-Love/master/122548",
+            "title": "Herbie Hancock - Lite Me Up / Satisfied With Love",
+            "country": "UK",
+            "format": [
+                "Vinyl",
+                "7\"",
+                "45 RPM",
+                "Single",
+                "Stereo"
+            ],
+            "user_data": {
+                "in_collection": false,
+                "in_wantlist": false
+            },
+            "community": {
+                "want": 84,
+                "have": 259
+            },
+            "label": [
+                "CBS",
+                "CBS Inc.",
+                "Rondor Music (London) Ltd.",
+                "Rodsongs",
+                "Carlin Music Corp."
+            ],
+            "cover_image": "https://img.discogs.com/tglhBNxZNdKKd7wTp6tDIBq0nRk=/fit-in/600x610/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-9490676-1554680679-8931.jpeg.jpg",
+            "catno": "CBS A2222",
+            "master_url": "https://api.discogs.com/masters/122548",
+            "year": "1982",
+            "genre": [
+                "Funk / Soul"
+            ],
+            "resource_url": "https://api.discogs.com/masters/122548",
+            "master_id": 122548,
+            "type": "master",
+            "id": 122548
+        },
+        {
+            "style": [
+                "Disco"
+            ],
+            "barcode": [],
+            "thumb": "https://img.discogs.com/5aVi2x1HptbFS5mSWzq1aQZCemQ=/fit-in/150x150/filters:strip_icc():format(jpeg):mode_rgb():quality(40)/discogs-images/R-1584860-1549850412-2761.jpeg.jpg",
+            "uri": "/Herbie-Hancock-Everybodys-Broke/master/282513",
+            "title": "Herbie Hancock - Everybody's Broke",
+            "country": "US",
+            "format": [
+                "Vinyl",
+                "12\"",
+                "33 ⅓ RPM",
+                "Promo"
+            ],
+            "user_data": {
+                "in_collection": false,
+                "in_wantlist": false
+            },
+            "community": {
+                "want": 106,
+                "have": 149
+            },
+            "label": [
+                "Columbia"
+            ],
+            "cover_image": "https://img.discogs.com/wnJrAKP6XGvrBGfCQCORvizxdd4=/fit-in/600x600/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-1584860-1549850412-2761.jpeg.jpg",
+            "catno": "AS  1251",
+            "master_url": "https://api.discogs.com/masters/282513",
+            "year": "1981",
+            "genre": [
+                "Funk / Soul"
+            ],
+            "resource_url": "https://api.discogs.com/masters/282513",
+            "master_id": 282513,
+            "type": "master",
+            "id": 282513
+        },
+        {
+            "style": [
+                "Jazz-Funk"
+            ],
+            "barcode": [
+                "BIEM/STEMRA"
+            ],
+            "thumb": "https://img.discogs.com/MCaK-Zu3rGJWdQSfFPx6yANdJiw=/fit-in/150x150/filters:strip_icc():format(jpeg):mode_rgb():quality(40)/discogs-images/R-1447723-1220448989.jpeg.jpg",
+            "uri": "/Herbie-Hancock-Just-Around-The-Corner/master/122544",
+            "title": "Herbie Hancock - Just Around The Corner",
+            "country": "Europe",
+            "format": [
+                "Vinyl",
+                "7\""
+            ],
+            "user_data": {
+                "in_collection": false,
+                "in_wantlist": false
+            },
+            "community": {
+                "want": 210,
+                "have": 83
+            },
+            "label": [
+                "CBS"
+            ],
+            "cover_image": "https://img.discogs.com/cTG22beP3sps6vIBqi0vuiHBB64=/fit-in/541x532/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-1447723-1220448989.jpeg.jpg",
+            "catno": "CBS 9467",
+            "master_url": "https://api.discogs.com/masters/122544",
+            "year": "1980",
+            "genre": [
+                "Jazz"
+            ],
+            "resource_url": "https://api.discogs.com/masters/122544",
+            "master_id": 122544,
+            "type": "master",
+            "id": 122544
+        },
+        {
+            "style": [
+                "Fusion",
+                "Jazz-Funk"
+            ],
+            "barcode": [
+                "8 86973 83532  6"
+            ],
+            "thumb": "https://img.discogs.com/imt6zbivscgKOfUbCKYR3M6nKjY=/fit-in/150x150/filters:strip_icc():format(jpeg):mode_rgb():quality(40)/discogs-images/R-8585591-1464552981-2654.jpeg.jpg",
+            "uri": "/Herbie-Hancock-Playlist-The-Very-Best-Of-Herbie-Hancock/master/1007903",
+            "title": "Herbie Hancock - Playlist: The Very Best Of Herbie Hancock",
+            "country": "US",
+            "format": [
+                "CD",
+                "Compilation"
+            ],
+            "user_data": {
+                "in_collection": false,
+                "in_wantlist": false
+            },
+            "community": {
+                "want": 8,
+                "have": 69
+            },
+            "label": [
+                "Columbia",
+                "Legacy",
+                "Playlist",
+                "Sony BMG Music Entertainment",
+                "Sony BMG Music Entertainment",
+                "Columbia",
+                "Hancock Music Company",
+                "Black Bull Music, Inc.",
+                "Jobete Music Co., Inc.",
+                "Johanan Vigoda",
+                "Warner-Tamerlane Publishing Corp.",
+                "Hancock Music",
+                "Benpin Music",
+                "More Cut Music",
+                "Bridge Of Sighs Music"
+            ],
+            "cover_image": "https://img.discogs.com/flH5a0bcRj5N0KS_-mNBN9er2qg=/fit-in/600x554/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-8585591-1464552981-2654.jpeg.jpg",
+            "catno": "88697 38353 2",
+            "master_url": "https://api.discogs.com/masters/1007903",
+            "year": "2008",
+            "genre": [
+                "Jazz",
+                "Funk / Soul"
+            ],
+            "resource_url": "https://api.discogs.com/masters/1007903",
+            "master_id": 1007903,
+            "type": "master",
+            "id": 1007903
+        },
+        {
+            "style": [],
+            "barcode": [
+                "7 4321894109 2",
+                "LC 00116",
+                "BIEM/GEMA",
+                "2"
+            ],
+            "thumb": "https://img.discogs.com/nYATjE6ajmbAK1WjGRdU1OEQwVM=/fit-in/150x150/filters:strip_icc():format(jpeg):mode_rgb():quality(40)/discogs-images/R-9958875-1489240011-1889.jpeg.jpg",
+            "uri": "/Herbie-Hancock-In-Concert/master/1148401",
+            "title": "Herbie Hancock - In Concert",
+            "country": "Europe",
+            "format": [
+                "DVD",
+                "DVD-Video",
+                "PAL"
+            ],
+            "user_data": {
+                "in_collection": false,
+                "in_wantlist": false
+            },
+            "community": {
+                "want": 3,
+                "have": 21
+            },
+            "label": [
+                "Image Entertainment",
+                "BET On Jazz",
+                "Image Entertainment, Inc.",
+                "Image Entertainment, Inc.",
+                "BET On Jazz",
+                "BMG"
+            ],
+            "cover_image": "https://img.discogs.com/Z_OrZaQIjsfmIf_ul14dTDGfG2Y=/fit-in/600x854/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-9958875-1489240011-1889.jpeg.jpg",
+            "catno": "74321 89410 9",
+            "master_url": "https://api.discogs.com/masters/1148401",
+            "year": "2001",
+            "genre": [
+                "Jazz"
+            ],
+            "resource_url": "https://api.discogs.com/masters/1148401",
+            "master_id": 1148401,
+            "type": "master",
+            "id": 1148401
+        },
+        {
+            "style": [
+                "P.Funk",
+                "Electro",
+                "Funk"
+            ],
+            "barcode": [
+                "5 099746 067922",
+                "BIEM/STEMRA",
+                "LC 0149",
+                "CDCBS-460679   12  MANUFACTURED BY DADC AUSTRIA",
+                "CB 811",
+                "DDD",
+                "CF",
+                "01-460679-10"
+            ],
+            "thumb": "https://img.discogs.com/1b4nPFxO0GTVrD71nvVZbC_oXoo=/fit-in/150x150/filters:strip_icc():format(jpeg):mode_rgb():quality(40)/discogs-images/R-13318669-1551992259-9277.jpeg.jpg",
+            "uri": "/Herbie-Hancock-Perfect-Machine/master/19541",
+            "title": "Herbie Hancock - Perfect Machine",
+            "country": "Europe",
+            "format": [
+                "CD",
+                "Album"
+            ],
+            "user_data": {
+                "in_collection": false,
+                "in_wantlist": false
+            },
+            "community": {
+                "want": 693,
+                "have": 1702
+            },
+            "label": [
+                "Columbia",
+                "CBS Records Inc.",
+                "CBS Records Inc.",
+                "CBS Records",
+                "CBS Disques S.A.",
+                "OAO Studios",
+                "RPM Studios",
+                "Garage Sale Recording",
+                "Eldorado Recording Studios",
+                "Masterdisk",
+                "RPM Studios",
+                "Garage Sale Recording",
+                "DADC Austria"
+            ],
+            "cover_image": "https://img.discogs.com/YW9txaOfUWHGBVfmAkQ5gggn4OU=/fit-in/600x604/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-13318669-1551992259-9277.jpeg.jpg",
+            "catno": "CBS 460679 2",
+            "master_url": "https://api.discogs.com/masters/19541",
+            "year": "1988",
+            "genre": [
+                "Electronic",
+                "Funk / Soul"
+            ],
+            "resource_url": "https://api.discogs.com/masters/19541",
+            "master_id": 19541,
+            "type": "master",
+            "id": 19541
+        },
+        {
+            "style": [],
+            "barcode": [],
+            "thumb": "https://img.discogs.com/KwHZf4ZwyGWBKDzjW-7cRmYOkJk=/fit-in/150x150/filters:strip_icc():format(jpeg):mode_rgb():quality(40)/discogs-images/R-1352946-1212098714.jpeg.jpg",
+            "uri": "/Herbie-Hancock-Doin-It-People-Music/master/176873",
+            "title": "Herbie Hancock - Doin' It / People Music",
+            "country": "Netherlands",
+            "format": [
+                "Vinyl",
+                "7\""
+            ],
+            "user_data": {
+                "in_collection": false,
+                "in_wantlist": false
+            },
+            "community": {
+                "want": 112,
+                "have": 151
+            },
+            "label": [
+                "CBS",
+                "cbs"
+            ],
+            "cover_image": "https://img.discogs.com/Zx5VV9jXLer7Sv-KpEHtkK9iHG4=/fit-in/600x590/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-1352946-1212098714.jpeg.jpg",
+            "catno": "CBS 4693",
+            "master_url": "https://api.discogs.com/masters/176873",
+            "year": "1976",
+            "genre": [
+                "Jazz",
+                "Funk / Soul"
+            ],
+            "resource_url": "https://api.discogs.com/masters/176873",
+            "master_id": 176873,
+            "type": "master",
+            "id": 176873
+        },
+        {
+            "style": [],
+            "barcode": [],
+            "thumb": "https://img.discogs.com/uAbkGXsZkBfnsZdYXM5jXH8soMU=/fit-in/150x150/filters:strip_icc():format(jpeg):mode_rgb():quality(40)/discogs-images/R-1223742-1201882848.jpeg.jpg",
+            "uri": "/Herbie-Hancock-Jazz-Moods-Round-Midnight/master/1605921",
+            "title": "Herbie Hancock - Jazz Moods - 'Round Midnight",
+            "country": "Europe",
+            "format": [
+                "CD",
+                "Compilation"
+            ],
+            "user_data": {
+                "in_collection": false,
+                "in_wantlist": false
+            },
+            "community": {
+                "want": 0,
+                "have": 37
+            },
+            "label": [
+                "Columbia",
+                "Jazz Moods",
+                "Sony Music Studios, New York City",
+                "Sony Music Entertainment Inc.",
+                "Sony Music Entertainment Inc."
+            ],
+            "cover_image": "https://img.discogs.com/XFjws8nT8pY6oKcKgb5fISBR0I0=/fit-in/600x600/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-1223742-1201882848.jpeg.jpg",
+            "catno": "COL 516427 2",
+            "master_url": "https://api.discogs.com/masters/1605921",
+            "year": "2004",
+            "genre": [
+                "Jazz"
+            ],
+            "resource_url": "https://api.discogs.com/masters/1605921",
+            "master_id": 1605921,
+            "type": "master",
+            "id": 1605921
+        },
+        {
+            "style": [
+                "Jazz-Funk",
+                "Fusion",
+                "Soundtrack"
+            ],
+            "barcode": [
+                "¥ 500"
+            ],
+            "thumb": "https://img.discogs.com/6-Rom0hyFDx_ozIa7DCqJbucxC4=/fit-in/150x150/filters:strip_icc():format(jpeg):mode_rgb():quality(40)/discogs-images/R-14385866-1573474044-9985.jpeg.jpg",
+            "uri": "/%E3%83%8F%E3%83%BC%E3%83%93%E3%83%BC%E3%83%8F%E3%83%B3%E3%82%B3%E3%83%83%E3%82%AF-Herbie-Hancock-%E7%8B%BC%E3%82%88%E3%81%95%E3%82%89%E3%81%B0-Death-Wish-Original-Soundtrack-Recording/release/14385866",
+            "title": "ハービー・ハンコック* = Herbie Hancock - 狼よさらば = Death Wish (Original Soundtrack Recording)",
+            "type": "release",
+            "format": [
+                "Vinyl",
+                "7\"",
+                "45 RPM",
+                "Single",
+                "Stereo"
+            ],
+            "user_data": {
+                "in_collection": false,
+                "in_wantlist": false
+            },
+            "community": {
+                "want": 10,
+                "have": 0
+            },
+            "label": [
+                "CBS/Sony",
+                "CBS/Sony Inc."
+            ],
+            "country": "Japan",
+            "cover_image": "https://img.discogs.com/w8bRlfpEVKebeSxLxyCcaG_tbjA=/fit-in/600x604/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-14385866-1573474044-9985.jpeg.jpg",
+            "catno": "SOPB 301",
+            "master_url": null,
+            "year": "1974",
+            "genre": [
+                "Jazz",
+                "Stage & Screen"
+            ],
+            "resource_url": "https://api.discogs.com/releases/14385866",
+            "master_id": 0,
+            "format_quantity": 1,
+            "id": 14385866,
+            "formats": [
+                {
+                    "qty": "1",
+                    "descriptions": [
+                        "7\"",
+                        "45 RPM",
+                        "Single",
+                        "Stereo"
+                    ],
+                    "name": "Vinyl"
+                }
+            ]
+        },
+        {
+            "style": [
+                "Soul",
+                "Funk",
+                "Disco"
+            ],
+            "barcode": [
+                "JASRAC",
+                "25AP-2316A1 〄CS 1 B 6",
+                "25AP-2316B1 1 B 3",
+                "¥2,500"
+            ],
+            "thumb": "https://img.discogs.com/NHpfnUlMqvdI9-O_N6-f100Ov2g=/fit-in/150x150/filters:strip_icc():format(jpeg):mode_rgb():quality(40)/discogs-images/R-1407718-1528279323-5379.jpeg.jpg",
+            "uri": "/Herbie-Hancock-%E3%83%8F%E3%83%BC%E3%83%93%E3%83%BC%E3%83%8F%E3%83%B3%E3%82%B3%E3%83%83%E3%82%AF-Lite-Me-Up-%E3%83%A9%E3%82%A4%E3%83%88%E3%83%9F%E3%83%BC%E3%82%A2%E3%83%83%E3%83%97/release/1407718",
+            "title": "Herbie Hancock = ハービー・ハンコック* - Lite Me Up = ライト・ミー・アップ",
+            "type": "release",
+            "format": [
+                "Vinyl",
+                "LP",
+                "Album"
+            ],
+            "user_data": {
+                "in_collection": false,
+                "in_wantlist": false
+            },
+            "community": {
+                "want": 93,
+                "have": 86
+            },
+            "label": [
+                "CBS/Sony",
+                "CBS/Sony Inc.",
+                "CBS Inc.",
+                "CBS Inc.",
+                "Perfection Light Productions",
+                "George Massenburg Studios",
+                "George Massenburg Studios",
+                "The Mastering Lab",
+                "Eldorado Recording Studios",
+                "The Automatt",
+                "The Automatt"
+            ],
+            "country": "Japan",
+            "cover_image": "https://img.discogs.com/WTvMXQ5xSgM_YVhIRlBzq-_swvI=/fit-in/600x601/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-1407718-1528279323-5379.jpeg.jpg",
+            "catno": "25AP 2316",
+            "master_url": "https://api.discogs.com/masters/122547",
+            "year": "1982",
+            "genre": [
+                "Funk / Soul"
+            ],
+            "resource_url": "https://api.discogs.com/releases/1407718",
+            "master_id": 122547,
+            "format_quantity": 1,
+            "id": 1407718,
+            "formats": [
+                {
+                    "qty": "1",
+                    "descriptions": [
+                        "LP",
+                        "Album"
+                    ],
+                    "name": "Vinyl"
+                }
+            ]
+        },
+        {
+            "style": [
+                "Funk",
+                "Disco"
+            ],
+            "barcode": [
+                "XSS 165175",
+                "XSS 165176"
+            ],
+            "thumb": "https://img.discogs.com/Rgw4PH3c8Fj7IxLrgAtlc8JbEhw=/fit-in/150x150/filters:strip_icc():format(jpeg):mode_rgb():quality(40)/discogs-images/R-844852-1164702601.jpeg.jpg",
+            "uri": "/Herbie-Hancock-You-Bet-Your-Love-Ready-Or-Not/master/122540",
+            "title": "Herbie Hancock - You Bet Your Love / Ready Or Not",
+            "country": "US",
+            "format": [
+                "Vinyl",
+                "12\"",
+                "33 ⅓ RPM",
+                "Single"
+            ],
+            "user_data": {
+                "in_collection": false,
+                "in_wantlist": false
+            },
+            "community": {
+                "want": 994,
+                "have": 1447
+            },
+            "label": [
+                "Columbia",
+                "CBS Inc."
+            ],
+            "cover_image": "https://img.discogs.com/wr1FPTODhYNkCRe5JlXOTkGKKHk=/fit-in/567x569/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-844852-1164702601.jpeg.jpg",
+            "catno": "23-10906",
+            "master_url": "https://api.discogs.com/masters/122540",
+            "year": "1979",
+            "genre": [
+                "Electronic",
+                "Funk / Soul"
+            ],
+            "resource_url": "https://api.discogs.com/masters/122540",
+            "master_id": 122540,
+            "type": "master",
+            "id": 122540
+        },
+        {
+            "style": [
+                "Modal"
+            ],
+            "barcode": [
+                "724382933120"
+            ],
+            "thumb": "https://img.discogs.com/l0FjUYmylFOWJjj1pgUymXwRkik=/fit-in/150x150/filters:strip_icc():format(jpeg):mode_rgb():quality(40)/discogs-images/R-547279-1202380930.jpeg.jpg",
+            "uri": "/Herbie-Hancock-Cantaloupe-Island/master/163862",
+            "title": "Herbie Hancock - Cantaloupe Island",
+            "country": "US",
+            "format": [
+                "CD",
+                "Compilation"
+            ],
+            "user_data": {
+                "in_collection": false,
+                "in_wantlist": false
+            },
+            "community": {
+                "want": 280,
+                "have": 882
+            },
+            "label": [
+                "Blue Note"
+            ],
+            "cover_image": "https://img.discogs.com/3YBB0-m286ilEdPO6PXKRNKk53s=/fit-in/301x300/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-547279-1202380930.jpeg.jpg",
+            "catno": "CDP 7243 8 29331 2 0",
+            "master_url": "https://api.discogs.com/masters/163862",
+            "year": "1994",
+            "genre": [
+                "Jazz"
+            ],
+            "resource_url": "https://api.discogs.com/masters/163862",
+            "master_id": 163862,
+            "type": "master",
+            "id": 163862
+        },
+        {
+            "style": [],
+            "barcode": [],
+            "thumb": "https://img.discogs.com/xD9VutuoQstnSRPDRs44xlVDPMI=/fit-in/150x150/filters:strip_icc():format(jpeg):mode_rgb():quality(40)/discogs-images/R-1430922-1364062134-6616.jpeg.jpg",
+            "uri": "/Herbie-Hancock-Hancock-Alley/master/1241138",
+            "title": "Herbie Hancock - Hancock Alley",
+            "country": "UK",
+            "format": [
+                "Vinyl",
+                "LP"
+            ],
+            "user_data": {
+                "in_collection": false,
+                "in_wantlist": false
+            },
+            "community": {
+                "want": 94,
+                "have": 153
+            },
+            "label": [
+                "Manhattan Records",
+                "Collector's Series"
+            ],
+            "cover_image": "https://img.discogs.com/-BcaFbfRB03jYr3gXYs72tFhFzA=/fit-in/336x325/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-1430922-1364062134-6616.jpeg.jpg",
+            "catno": "MAN 5021",
+            "master_url": "https://api.discogs.com/masters/1241138",
+            "year": "1980",
+            "genre": [
+                "Jazz"
+            ],
+            "resource_url": "https://api.discogs.com/masters/1241138",
+            "master_id": 1241138,
+            "type": "master",
+            "id": 1241138
+        },
+        {
+            "style": [
+                "Jazz-Funk",
+                "Funk"
+            ],
+            "barcode": [],
+            "thumb": "https://img.discogs.com/Th9HtjNiDm3XQsNFBvQ45CzD8RE=/fit-in/150x150/filters:strip_icc():format(jpeg):mode_rgb():quality(40)/discogs-images/R-1948167-1392783672-9699.jpeg.jpg",
+            "uri": "/Herbie-Hancock-Palm-Grease-Butterfly/master/203355",
+            "title": "Herbie Hancock - Palm Grease / Butterfly",
+            "country": "US",
+            "format": [
+                "Vinyl",
+                "7\"",
+                "45 RPM"
+            ],
+            "user_data": {
+                "in_collection": false,
+                "in_wantlist": false
+            },
+            "community": {
+                "want": 247,
+                "have": 114
+            },
+            "label": [
+                "Columbia"
+            ],
+            "cover_image": "https://img.discogs.com/OnnZRWjci7tiey7aFTFog1hOr44=/fit-in/600x596/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-1948167-1392783672-9699.jpeg.jpg",
+            "catno": "3-10050",
+            "master_url": "https://api.discogs.com/masters/203355",
+            "year": "1974",
+            "genre": [
+                "Jazz",
+                "Funk / Soul"
+            ],
+            "resource_url": "https://api.discogs.com/masters/203355",
+            "master_id": 203355,
+            "type": "master",
+            "id": 203355
+        },
+        {
+            "style": [],
+            "barcode": [
+                "SIAE"
+            ],
+            "thumb": "https://img.discogs.com/BFFV6GyytE4f2af_vpYDo4G_eyg=/fit-in/150x150/filters:strip_icc():format(jpeg):mode_rgb():quality(40)/discogs-images/R-10209888-1493451222-8901.jpeg.jpg",
+            "uri": "/Herbie-Hancock-Herbie-Hancock/master/1011925",
+            "title": "Herbie Hancock - Herbie Hancock",
+            "country": "Italy",
+            "format": [
+                "CD",
+                "Compilation"
+            ],
+            "user_data": {
+                "in_collection": false,
+                "in_wantlist": false
+            },
+            "community": {
+                "want": 2,
+                "have": 62
+            },
+            "label": [
+                "Fabbri Editori",
+                "Jazz Time"
+            ],
+            "cover_image": "https://img.discogs.com/d8z1G8Nef9e7VXx-ADEod44WZTU=/fit-in/600x599/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-10209888-1493451222-8901.jpeg.jpg",
+            "catno": "JT-02",
+            "master_url": "https://api.discogs.com/masters/1011925",
+            "year": "1989",
+            "genre": [
+                "Jazz"
+            ],
+            "resource_url": "https://api.discogs.com/masters/1011925",
+            "master_id": 1011925,
+            "type": "master",
+            "id": 1011925
+        },
+        {
+            "style": [
+                "Space-Age",
+                "Fusion",
+                "Jazz-Funk"
+            ],
+            "barcode": [],
+            "thumb": "https://img.discogs.com/LWVc0TX2HgWnshPj_7C9vsF_-J4=/fit-in/150x150/filters:strip_icc():format(jpeg):mode_rgb():quality(40)/discogs-images/R-7129289-1434386797-8270.jpeg.jpg",
+            "uri": "/Herbie-Hancock-Sextant/master/925203",
+            "title": "Herbie Hancock - Sextant",
+            "country": "US",
+            "format": [
+                "DVDr",
+                "DVD-Audio",
+                "Quadraphonic"
+            ],
+            "user_data": {
+                "in_collection": false,
+                "in_wantlist": false
+            },
+            "community": {
+                "want": 0,
+                "have": 0
+            },
+            "label": [
+                "Columbia"
+            ],
+            "cover_image": "https://img.discogs.com/ouvlRYlgXkcNjhktJablG16wKo0=/fit-in/600x600/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-7129289-1434386797-8270.jpeg.jpg",
+            "catno": "KC 32212",
+            "master_url": "https://api.discogs.com/masters/925203",
+            "year": "1973",
+            "genre": [
+                "Jazz",
+                "Funk / Soul"
+            ],
+            "resource_url": "https://api.discogs.com/masters/925203",
+            "master_id": 925203,
+            "type": "master",
+            "id": 925203
+        },
+        {
+            "style": [
+                "Soundtrack",
+                "Dialogue",
+                "Funk"
+            ],
+            "master_id": 432881,
+            "thumb": "",
+            "format": [
+                "Vinyl",
+                "LP",
+                "Album",
+                "Reissue"
+            ],
+            "country": "US",
+            "barcode": [],
+            "uri": "/Herbie-Hancock-The-Spook-Who-Sat-By-The-Door/master/432881",
+            "master_url": "https://api.discogs.com/masters/432881",
+            "user_data": {
+                "in_collection": false,
+                "in_wantlist": false
+            },
+            "genre": [
+                "Funk / Soul",
+                "Non-Music",
+                "Stage & Screen"
+            ],
+            "catno": "UAR-7370",
+            "community": {
+                "want": 0,
+                "have": 0
+            },
+            "cover_image": "https://img.discogs.com/42d93932115fff4114f37e812fb5b27d7b867540/images/spacer.gif",
+            "title": "Herbie Hancock - The Spook Who Sat By The Door",
+            "resource_url": "https://api.discogs.com/masters/432881",
+            "label": [
+                "United Artists Records"
+            ],
+            "type": "master",
+            "id": 432881
+        },
+        {
+            "style": [
+                "Electro"
+            ],
+            "barcode": [
+                "MCPS/BIEM"
+            ],
+            "thumb": "https://img.discogs.com/1av9dNx87wiBJ_PMOGkhJo8eCs8=/fit-in/150x150/filters:strip_icc():format(jpeg):mode_rgb():quality(40)/discogs-images/R-260678-1287316430.jpeg.jpg",
+            "uri": "/Herbie-Hancock-Rockit-bw-I-Thought-It-Was-You/master/203369",
+            "title": "Herbie Hancock - Rockit b/w I Thought It Was You",
+            "country": "UK",
+            "format": [
+                "Vinyl",
+                "7\"",
+                "45 RPM"
+            ],
+            "user_data": {
+                "in_collection": false,
+                "in_wantlist": false
+            },
+            "community": {
+                "want": 0,
+                "have": 0
+            },
+            "label": [
+                "CBS",
+                "CBS"
+            ],
+            "cover_image": "https://img.discogs.com/PF4p-bDttvL_kxcr5U9gdEeAm2s=/fit-in/600x600/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-260678-1287316430.jpeg.jpg",
+            "catno": "A3577",
+            "master_url": "https://api.discogs.com/masters/203369",
+            "year": "1983",
+            "genre": [
+                "Electronic"
+            ],
+            "resource_url": "https://api.discogs.com/masters/203369",
+            "master_id": 203369,
+            "type": "master",
+            "id": 203369
+        },
+        {
+            "style": [
+                "Fusion",
+                "Jazz-Funk"
+            ],
+            "barcode": [
+                "AL 32965",
+                "BL 32965",
+                "P AL-32965-1G / A",
+                "P BL-32965-1A A 2",
+                "P AL-32965-1J",
+                "P BL-32965-1E",
+                "P AL-32965-1F",
+                "P BL-32965-1F",
+                "ᴘ  P AL-32965-1E  o 1",
+                "ᴘ  P BL-32965-1E  ᴘ 3",
+                "P AL 32965-1H 2",
+                "P BL 32965-1G 1",
+                "P AL 32965-1D",
+                "P BL 32965-1C"
+            ],
+            "thumb": "https://img.discogs.com/ZCUo7RetHfDHunqYiOqpfEBGEZE=/fit-in/150x150/filters:strip_icc():format(jpeg):mode_rgb():quality(40)/discogs-images/R-31382-1396079869-1943.jpeg.jpg",
+            "uri": "/Herbie-Hancock-Thrust/master/47917",
+            "title": "Herbie Hancock - Thrust",
+            "country": "US",
+            "format": [
+                "Vinyl",
+                "LP",
+                "Album"
+            ],
+            "user_data": {
+                "in_collection": false,
+                "in_wantlist": false
+            },
+            "community": {
+                "want": 8953,
+                "have": 9116
+            },
+            "label": [
+                "Columbia",
+                "Wally Heider Studios",
+                "David Rubinson And Friends, Inc.",
+                "Catero Sound Company",
+                "CBS Inc.",
+                "CBS Inc.",
+                "Columbia Records",
+                "CBS Inc.",
+                "Customatrix",
+                "Columbia Records Pressing Plant, Pitman"
+            ],
+            "cover_image": "https://img.discogs.com/VLRTIixQRvD3rZjGDpjk-rDMrVg=/fit-in/600x602/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-31382-1396079869-1943.jpeg.jpg",
+            "catno": "PC 32965",
+            "master_url": "https://api.discogs.com/masters/47917",
+            "year": "1974",
+            "genre": [
+                "Jazz",
+                "Funk / Soul"
+            ],
+            "resource_url": "https://api.discogs.com/masters/47917",
+            "master_id": 47917,
+            "type": "master",
+            "id": 47917
+        },
+        {
+            "style": [
+                "Soundtrack",
+                "Hard Bop",
+                "Post Bop"
+            ],
+            "barcode": [
+                "0 7464-40464-1",
+                "C 40464  AL 40464",
+                "PAL 40464  1F  GI  MASTERED BY CAPITOL  A2",
+                "C 40464  BL 40464",
+                "PAL 40464  1C  GI  MASTERED BY CAPITOL  B5"
+            ],
+            "thumb": "https://img.discogs.com/qcMaPIyrnlEngBqNnfnveZGogfA=/fit-in/150x150/filters:strip_icc():format(jpeg):mode_rgb():quality(40)/discogs-images/R-1724303-1289978756.jpeg.jpg",
+            "uri": "/Herbie-Hancock-Round-Midnight-Original-Motion-Picture-Soundtrack/master/47870",
+            "title": "Herbie Hancock - Round Midnight - Original Motion Picture Soundtrack",
+            "country": "US",
+            "format": [
+                "Vinyl",
+                "LP",
+                "Album"
+            ],
+            "user_data": {
+                "in_collection": false,
+                "in_wantlist": false
+            },
+            "community": {
+                "want": 406,
+                "have": 3663
+            },
+            "label": [
+                "Columbia",
+                "Columbia",
+                "CBS Inc.",
+                "Studio Eclair",
+                "Studio Davout",
+                "Studio Phillipe Sarde",
+                "Capitol Studios"
+            ],
+            "cover_image": "https://img.discogs.com/2cTzAdfXGXRoXDgC6nRANnwOqaQ=/fit-in/600x612/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-1724303-1289978756.jpeg.jpg",
+            "catno": "SC 40464",
+            "master_url": "https://api.discogs.com/masters/47870",
+            "year": "1986",
+            "genre": [
+                "Jazz",
+                "Stage & Screen"
+            ],
+            "resource_url": "https://api.discogs.com/masters/47870",
+            "master_id": 47870,
+            "type": "master",
+            "id": 47870
+        },
+        {
+            "style": [
+                "Jazz-Funk",
+                "Modal",
+                "Soundtrack",
+                "Score",
+                "Instrumental"
+            ],
+            "barcode": [
+                "X698",
+                "AL 33199",
+                "BL 33199",
+                "o P AL 33199-1A 1 A1",
+                "o P BL 33199-1A / A1"
+            ],
+            "thumb": "https://img.discogs.com/WISZDxcz01OT0iYvLJlvtnk4PSE=/fit-in/150x150/filters:strip_icc():format(jpeg):mode_rgb():quality(40)/discogs-images/R-368747-1454672848-1011.jpeg.jpg",
+            "uri": "/Herbie-Hancock-Death-Wish-Original-Soundtrack-Recording/master/47748",
+            "title": "Herbie Hancock - Death Wish (Original Soundtrack Recording)",
+            "country": "US",
+            "format": [
+                "Vinyl",
+                "LP",
+                "Album"
+            ],
+            "user_data": {
+                "in_collection": false,
+                "in_wantlist": false
+            },
+            "community": {
+                "want": 2274,
+                "have": 2308
+            },
+            "label": [
+                "Columbia",
+                "Columbia Records",
+                "CBS Inc.",
+                "CBS Inc.",
+                "CBS Inc.",
+                "Catero Sound Company",
+                "The Burbank Studios",
+                "Western Recorders",
+                "Wally Heider Studios",
+                "CBS Studios, San Francisco",
+                "Customatrix",
+                "Columbia Records Pressing Plant, Pitman"
+            ],
+            "cover_image": "https://img.discogs.com/hgCDM4Yz1yz1zY5pJIb0-8h6VF4=/fit-in/600x600/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-368747-1454672848-1011.jpeg.jpg",
+            "catno": "PC 33199",
+            "master_url": "https://api.discogs.com/masters/47748",
+            "year": "1974",
+            "genre": [
+                "Jazz",
+                "Stage & Screen"
+            ],
+            "resource_url": "https://api.discogs.com/masters/47748",
+            "master_id": 47748,
+            "type": "master",
+            "id": 47748
+        },
+        {
+            "style": [],
+            "barcode": [
+                "7 66929 94842 6"
+            ],
+            "thumb": "https://img.discogs.com/e0XdUNMUb6Fzntn0UrCfESrtg3s=/fit-in/150x150/filters:strip_icc():format(jpeg):mode_rgb():quality(40)/discogs-images/R-2323265-1276909572.jpeg.jpg",
+            "uri": "/Herbie-Hancock-The-Imagine-Project/master/257542",
+            "title": "Herbie Hancock - The Imagine Project",
+            "country": "US",
+            "format": [
+                "CD",
+                "Album"
+            ],
+            "user_data": {
+                "in_collection": false,
+                "in_wantlist": false
+            },
+            "community": {
+                "want": 213,
+                "have": 725
+            },
+            "label": [
+                "Hancock Records"
+            ],
+            "cover_image": "https://img.discogs.com/c_SWfG-YV4MloqzLEoZuYlvB2LQ=/fit-in/500x500/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-2323265-1276909572.jpeg.jpg",
+            "catno": "HR 0001",
+            "master_url": "https://api.discogs.com/masters/257542",
+            "year": "2010",
+            "genre": [
+                "Jazz",
+                "Folk, World, & Country"
+            ],
+            "resource_url": "https://api.discogs.com/masters/257542",
+            "master_id": 257542,
+            "type": "master",
+            "id": 257542
+        },
+        {
+            "style": [
+                "Hard Bop",
+                "Post Bop"
+            ],
+            "barcode": [],
+            "thumb": "https://img.discogs.com/tA_6lx9_DDEzRnN1hrMse8wq9KA=/fit-in/150x150/filters:strip_icc():format(jpeg):mode_rgb():quality(40)/discogs-images/R-8755185-1468070808-6979.mpo.jpg",
+            "uri": "/Herbie-Hancock-Blind-Man-Blind-Man/master/1026602",
+            "title": "Herbie Hancock - Blind Man, Blind Man",
+            "country": "France",
+            "format": [
+                "Vinyl",
+                "7\"",
+                "Single"
+            ],
+            "user_data": {
+                "in_collection": false,
+                "in_wantlist": false
+            },
+            "community": {
+                "want": 62,
+                "have": 32
+            },
+            "label": [
+                "Blue Note"
+            ],
+            "cover_image": "https://img.discogs.com/w5S8LOLWlUDJx-mWeN709B1jG18=/fit-in/600x590/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-8755185-1468070808-6979.mpo.jpg",
+            "catno": "45 1887",
+            "master_url": "https://api.discogs.com/masters/1026602",
+            "year": "1964",
+            "genre": [
+                "Jazz"
+            ],
+            "resource_url": "https://api.discogs.com/masters/1026602",
+            "master_id": 1026602,
+            "type": "master",
+            "id": 1026602
+        },
+        {
+            "style": [
+                "Contemporary Jazz"
+            ],
+            "barcode": [
+                "0 7464-38275-1",
+                "074643827515",
+                "BMI",
+                "ASCAP",
+                "C 38276",
+                "C 38277",
+                "AL 38276",
+                "BL 38276",
+                "AL 38277",
+                "BL 38277",
+                "P o  PAL 38276-1C  I  PRECiSiON D.L. ",
+                "P o  PBL - 38276-1C  I  PrecisionSM-  A",
+                "P o  PAL 38277-1AB  PRECiSiON  I",
+                "P  PBL 38277-1C  I o  PRECiSiON D.L.",
+                "PAL-38276-1C  PRECISION D.L.",
+                "PBL-38276-1C  PrecisionSM",
+                "PAL-38277-1A  PRECISION D.L.",
+                "PBL-38277-1A  PRECISION D.L."
+            ],
+            "thumb": "https://img.discogs.com/tkXYq7RHDbkGLlFMVCstjWCGneI=/fit-in/150x150/filters:strip_icc():format(jpeg):mode_rgb():quality(40)/discogs-images/R-1181909-1199038593.jpeg.jpg",
+            "uri": "/Herbie-Hancock-Quartet/master/21197",
+            "title": "Herbie Hancock - Quartet",
+            "country": "US",
+            "format": [
+                "Vinyl",
+                "LP",
+                "Album"
+            ],
+            "user_data": {
+                "in_collection": false,
+                "in_wantlist": false
+            },
+            "community": {
+                "want": 361,
+                "have": 1501
+            },
+            "label": [
+                "Columbia",
+                "CBS Inc.",
+                "CBS Inc.",
+                "CBS/Sony Studio",
+                "Precision Lacquer",
+                "Customatrix",
+                "Digital Magnetics",
+                "Columbia Records",
+                "CBS Inc.",
+                "Columbia Records Pressing Plant, Pitman"
+            ],
+            "cover_image": "https://img.discogs.com/fptXrAROg-mDdHsyo32K3oZX_vQ=/fit-in/594x598/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-1181909-1199038593.jpeg.jpg",
+            "catno": "C2 38275",
+            "master_url": "https://api.discogs.com/masters/21197",
+            "year": "1982",
+            "genre": [
+                "Jazz"
+            ],
+            "resource_url": "https://api.discogs.com/masters/21197",
+            "master_id": 21197,
+            "type": "master",
+            "id": 21197
+        },
+        {
+            "style": [
+                "Fusion",
+                "Jazz-Funk",
+                "Contemporary Jazz"
+            ],
+            "barcode": [
+                "0  9362-45732-2   7",
+                "BMI"
+            ],
+            "thumb": "https://img.discogs.com/nsxpg9Rl1FyBjZht4zPfyVRioZU=/fit-in/150x150/filters:strip_icc():format(jpeg):mode_rgb():quality(40)/discogs-images/R-8566474-1464202527-9999.jpeg.jpg",
+            "uri": "/Herbie-Hancock-Mwandishi-The-Complete-Warner-Bros-Recordings/master/47859",
+            "title": "Herbie Hancock - Mwandishi - The Complete Warner Bros. Recordings",
+            "country": "US",
+            "format": [
+                "CD",
+                "Compilation"
+            ],
+            "user_data": {
+                "in_collection": false,
+                "in_wantlist": false
+            },
+            "community": {
+                "want": 61,
+                "have": 361
+            },
+            "label": [
+                "Warner Bros. Records",
+                "Warner Bros. Records",
+                "Warner Archives",
+                "Warner Bros. Records Inc.",
+                "WEA International Inc.",
+                "Warner Bros. Records Inc.",
+                "WEA International Inc.",
+                "Time Warner",
+                "WEA Manufacturing",
+                "Specialty Records Corporation",
+                "Van Gelder Studio, Englewood Cliffs, New Jersey",
+                "Wally Heider Studios",
+                "Pacific Recording Studios",
+                "Different Fur Studios",
+                "Hancock Records, Inc. Production",
+                "Filmore Corporation",
+                "Hancock Music",
+                "Benpin Music"
+            ],
+            "cover_image": "https://img.discogs.com/IZXs22arJqTpjRBj8Cg2RLllmbw=/fit-in/600x581/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-8566474-1464202527-9999.jpeg.jpg",
+            "catno": "9 45732-2",
+            "master_url": "https://api.discogs.com/masters/47859",
+            "year": "1994",
+            "genre": [
+                "Jazz",
+                "Funk / Soul"
+            ],
+            "resource_url": "https://api.discogs.com/masters/47859",
+            "master_id": 47859,
+            "type": "master",
+            "id": 47859
+        },
+        {
+            "style": [
+                "Bop"
+            ],
+            "barcode": [
+                "BN-LP 4109 A",
+                "BN-LP 4109 B",
+                "BN-LP-4109 A-1",
+                "BN-LP-4109 B-1",
+                "[Plastylite \"ear\"]): P",
+                "VAN GELDER"
+            ],
+            "thumb": "https://img.discogs.com/1ojBG9eZGhq-TxjVd6PLYBDk4bU=/fit-in/150x150/filters:strip_icc():format(jpeg):mode_rgb():quality(40)/discogs-images/R-1907708-1477897343-9129.jpeg.jpg",
+            "uri": "/Herbie-Hancock-Takin-Off/master/163780",
+            "title": "Herbie Hancock - Takin' Off",
+            "country": "US",
+            "format": [
+                "Vinyl",
+                "LP",
+                "Album",
+                "Mono"
+            ],
+            "user_data": {
+                "in_collection": false,
+                "in_wantlist": false
+            },
+            "community": {
+                "want": 7589,
+                "have": 5389
+            },
+            "label": [
+                "Blue Note",
+                "Van Gelder Studio, Englewood Cliffs, New Jersey",
+                "Plastylite"
+            ],
+            "cover_image": "https://img.discogs.com/nZAeJNWz48W3D105-wRCShUZOKk=/fit-in/600x600/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-1907708-1477897343-9129.jpeg.jpg",
+            "catno": "BLP 4109",
+            "master_url": "https://api.discogs.com/masters/163780",
+            "year": "1962",
+            "genre": [
+                "Jazz"
+            ],
+            "resource_url": "https://api.discogs.com/masters/163780",
+            "master_id": 163780,
+            "type": "master",
+            "id": 163780
+        },
+        {
+            "style": [
+                "Disco",
+                "Jazz-Funk",
+                "Jazz-Rock",
+                "Soul-Jazz"
+            ],
+            "barcode": [
+                "0 7464-36415-1",
+                "074643641517",
+                "AL 36415",
+                "BL 36415",
+                "P AL 36415-1C",
+                "P BL 36415-1D",
+                "P AL 36415-1E",
+                "P AL 36415-1F",
+                "P AL 36415-1F T",
+                "P BL 36415-1F T"
+            ],
+            "thumb": "https://img.discogs.com/UBHzdW6tq9_dpmdSwIsgSZ2mPyw=/fit-in/150x150/filters:strip_icc():format(jpeg):mode_rgb():quality(40)/discogs-images/R-1976190-1518700446-6089.jpeg.jpg",
+            "uri": "/Herbie-Hancock-Monster/master/47837",
+            "title": "Herbie Hancock - Monster",
+            "country": "US",
+            "format": [
+                "Vinyl",
+                "LP",
+                "Album"
+            ],
+            "user_data": {
+                "in_collection": false,
+                "in_wantlist": false
+            },
+            "community": {
+                "want": 2407,
+                "have": 3182
+            },
+            "label": [
+                "Columbia",
+                "CBS Inc.",
+                "CBS Inc.",
+                "The Village Recorder",
+                "United Western Studios",
+                "The Automatt",
+                "The Automatt",
+                "The Automatt",
+                "Columbia Records"
+            ],
+            "cover_image": "https://img.discogs.com/EEVzOGxnVwGPJUcNxLIPglbwuH0=/fit-in/600x600/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-1976190-1518700446-6089.jpeg.jpg",
+            "catno": "JC 36415",
+            "master_url": "https://api.discogs.com/masters/47837",
+            "year": "1980",
+            "genre": [
+                "Jazz",
+                "Funk / Soul"
+            ],
+            "resource_url": "https://api.discogs.com/masters/47837",
+            "master_id": 47837,
+            "type": "master",
+            "id": 47837
+        },
+        {
+            "style": [],
+            "barcode": [
+                "BST-89907-1 BW",
+                "BST-89907-2 BW",
+                "BST-89907-3 BW",
+                "BST-89907-4 BW",
+                "BMI"
+            ],
+            "thumb": "https://img.discogs.com/-XraFKpQNhsNXR1L3PVTjn3OjDM=/fit-in/150x150/filters:strip_icc():format(jpeg):mode_rgb():quality(40)/discogs-images/R-5853148-1404502291-3617.jpeg.jpg",
+            "uri": "/Herbie-Hancock-The-Best-Of-Herbie-Hancock/master/416058",
+            "title": "Herbie Hancock - The Best Of Herbie Hancock",
+            "country": "US",
+            "format": [
+                "Vinyl",
+                "LP",
+                "Compilation"
+            ],
+            "user_data": {
+                "in_collection": false,
+                "in_wantlist": false
+            },
+            "community": {
+                "want": 243,
+                "have": 1039
+            },
+            "label": [
+                "Blue Note",
+                "United Artists Records, Inc.",
+                "United Artists Records, Inc.",
+                "Hancock Music",
+                "Bestway Products Inc."
+            ],
+            "cover_image": "https://img.discogs.com/YkN2_sFaYfrtiC4SNOrEZCC29JA=/fit-in/600x598/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-5853148-1404502291-3617.jpeg.jpg",
+            "catno": "BST 89907",
+            "master_url": "https://api.discogs.com/masters/416058",
+            "year": "1971",
+            "genre": [
+                "Jazz"
+            ],
+            "resource_url": "https://api.discogs.com/masters/416058",
+            "master_id": 416058,
+            "type": "master",
+            "id": 416058
+        },
+        {
+            "style": [
+                "Downtempo",
+                "Disco"
+            ],
+            "barcode": [
+                "XSS 167302",
+                "XSS 167322"
+            ],
+            "thumb": "https://img.discogs.com/SdvehvBg5Mpi5IMqSzm7AxHsDHU=/fit-in/150x150/filters:strip_icc():format(jpeg):mode_rgb():quality(40)/discogs-images/R-779922-1417279014-1937.jpeg.jpg",
+            "uri": "/Herbie-Hancock-Go-For-It-Stars-In-Your-Eyes/master/1147698",
+            "title": "Herbie Hancock - Go For It / Stars In Your Eyes",
+            "country": "US",
+            "format": [
+                "Vinyl",
+                "12\"",
+                "33 ⅓ RPM"
+            ],
+            "user_data": {
+                "in_collection": false,
+                "in_wantlist": false
+            },
+            "community": {
+                "want": 551,
+                "have": 386
+            },
+            "label": [
+                "Columbia"
+            ],
+            "cover_image": "https://img.discogs.com/mSGNsaMdRiSO45sdVTrdiOeh5sY=/fit-in/600x600/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-779922-1417279014-1937.jpeg.jpg",
+            "catno": "43-11310",
+            "master_url": "https://api.discogs.com/masters/1147698",
+            "year": "1980",
+            "genre": [
+                "Electronic",
+                "Funk / Soul"
+            ],
+            "resource_url": "https://api.discogs.com/masters/1147698",
+            "master_id": 1147698,
+            "type": "master",
+            "id": 1147698
+        },
+        {
+            "style": [
+                "Modal"
+            ],
+            "barcode": [
+                "JASRAC"
+            ],
+            "thumb": "https://img.discogs.com/pHdVBWqhDucd1FjRrgJsx6WrMp8=/fit-in/150x150/filters:strip_icc():format(jpeg):mode_rgb():quality(40)/discogs-images/R-2839810-1339230231-1195.jpeg.jpg",
+            "uri": "/Herbie-Hancock-The-Piano/master/261246",
+            "title": "Herbie Hancock - The Piano",
+            "country": "Japan",
+            "format": [
+                "Vinyl",
+                "LP",
+                "Album",
+                "Stereo"
+            ],
+            "user_data": {
+                "in_collection": false,
+                "in_wantlist": false
+            },
+            "community": {
+                "want": 307,
+                "have": 334
+            },
+            "label": [
+                "CBS/Sony",
+                "Master Sound DD Direct Disk",
+                "CBS/Sony Inc."
+            ],
+            "cover_image": "https://img.discogs.com/ELz27o-ByU0wTGITC9UVRoS3RHE=/fit-in/480x460/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-2839810-1339230231-1195.jpeg.jpg",
+            "catno": "30AP 1033",
+            "master_url": "https://api.discogs.com/masters/261246",
+            "year": "1979",
+            "genre": [
+                "Jazz"
+            ],
+            "resource_url": "https://api.discogs.com/masters/261246",
+            "master_id": 261246,
+            "type": "master",
+            "id": 261246
+        },
+        {
+            "style": [
+                "Contemporary Jazz",
+                "Easy Listening",
+                "Modal",
+                "Hard Bop",
+                "Post Bop",
+                "Disco",
+                "Cool Jazz"
+            ],
+            "barcode": [
+                "0 827969 459324",
+                "0827969459324",
+                "IFPI L681",
+                "IFPI 651D",
+                "Sony DADC Australia A0000069578X0102 01 IFPI L681",
+                "IFPI L681",
+                "IFPI 6519",
+                "Sony DADC Australia A0000069578X0202 01 IFPI L681"
+            ],
+            "thumb": "https://img.discogs.com/I5Z7t9nGXooFh4nqBeje-Wbk6ks=/fit-in/150x150/filters:strip_icc():format(jpeg):mode_rgb():quality(40)/discogs-images/R-2198149-1269321669.jpeg.jpg",
+            "uri": "/Herbie-Hancock-The-Essential-Herbie-Hancock/master/235462",
+            "title": "Herbie Hancock - The Essential Herbie Hancock",
+            "country": "Australia",
+            "format": [
+                "CD",
+                "Compilation"
+            ],
+            "user_data": {
+                "in_collection": false,
+                "in_wantlist": false
+            },
+            "community": {
+                "want": 19,
+                "have": 221
+            },
+            "label": [
+                "Columbia",
+                "Legacy",
+                "The Essential",
+                "Sony BMG Music Entertainment",
+                "Sony BMG Music Entertainment",
+                "Verve Records",
+                "Sony BMG Music Entertainment (Australia) Pty Limited",
+                "Sony Music Studios, New York City",
+                "Sony DADC Australia",
+                "Sony DADC Australia",
+                "Mosaic Images"
+            ],
+            "cover_image": "https://img.discogs.com/OX9K5g6TqPRWHfprNFSPdR4Vydo=/fit-in/600x588/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-2198149-1269321669.jpeg.jpg",
+            "catno": "82796945932",
+            "master_url": "https://api.discogs.com/masters/235462",
+            "year": "2006",
+            "genre": [
+                "Jazz",
+                "Funk / Soul"
+            ],
+            "resource_url": "https://api.discogs.com/masters/235462",
+            "master_id": 235462,
+            "type": "master",
+            "id": 235462
+        },
+        {
+            "style": [
+                "Contemporary Jazz",
+                "Fusion",
+                "Modal",
+                "Jazz-Funk"
+            ],
+            "barcode": [
+                "5  099751 745822",
+                "SACEM SACD SGDL SDRM BIEM",
+                "LC 00162",
+                "5174582000/1",
+                "Sony Music S0100551672-0104   15  A1  1",
+                "IFPI L555",
+                "5174582000/2",
+                "Sony Music S0100551541-0204  13 A0  2",
+                "IFPI L553",
+                "5174582000/3",
+                "Sony Music S5174582000-0304  13  A0  3",
+                "IFPI L553",
+                "5174582000/4",
+                "Sony Music S5174582000-0404  14  A1  4",
+                "IFPI L554"
+            ],
+            "thumb": "https://img.discogs.com/_EPZvYP2Q0is_vxpJB2D8n1ks1k=/fit-in/150x150/filters:strip_icc():format(jpeg):mode_rgb():quality(40)/discogs-images/R-13304948-1551818217-5968.jpeg.jpg",
+            "uri": "/Herbie-Hancock-The-Herbie-Hancock-Box/master/638954",
+            "title": "Herbie Hancock - The Herbie Hancock Box",
+            "country": "Europe",
+            "format": [
+                "CD",
+                "Compilation",
+                "Remastered",
+                "Box Set"
+            ],
+            "user_data": {
+                "in_collection": false,
+                "in_wantlist": false
+            },
+            "community": {
+                "want": 58,
+                "have": 208
+            },
+            "label": [
+                "Columbia",
+                "Legacy",
+                "Sony Music Entertainment Inc.",
+                "Sony Music Entertainment Inc.",
+                "Sony Music",
+                "Sony Music",
+                "Sony Music",
+                "Sony Music",
+                "Sony Music"
+            ],
+            "cover_image": "https://img.discogs.com/mgeB3V1vclP35HI3jZj0m08KCoA=/fit-in/600x1071/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-13304948-1551818217-5968.jpeg.jpg",
+            "catno": "COL 517458 2",
+            "master_url": "https://api.discogs.com/masters/638954",
+            "year": "2002",
+            "genre": [
+                "Jazz"
+            ],
+            "resource_url": "https://api.discogs.com/masters/638954",
+            "master_id": 638954,
+            "type": "master",
+            "id": 638954
+        }
+    ]
+}

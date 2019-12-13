@@ -2,6 +2,8 @@ import * as THREE from './three/three.module.js';
 import { FBXLoader } from "./three/FBXLoader.js";
 import * as SPLINE from "./spline.js";
 import * as MATHUTIL from "./mathUtil.js";
+import {Release} from "./release.js";
+import * as API from "./ui/api.js";
 
 function initScene () {
     scene = new THREE.Scene();
@@ -19,6 +21,113 @@ function initScene () {
     // var gridHelper = new THREE.GridHelper( 1000, 50 );
     // scene.add( gridHelper );
 }
+
+// function generateTimeline(artistName) {
+//     var artistId = getArtistId(); // search for artist
+//     var masterReleaseIds = getArtistReleaseIds(artistId); // request releases by artist
+
+//     // for each release
+//     // generate object to be seen on timeline
+//     var releaseJSON;
+//     var release;
+//     masterReleaseIds.forEach((masterReleaseId) => {
+//         releaseJSON = getRelease(masterReleaseId);
+//         release = addRelease(releaseJSON);
+//         if(release != null) { releases.push(release);}      
+//     });
+
+//     // calculate length of each decade on timeline based on the number of release in decade
+//     // what is an efficient way to get year
+//     var decade;
+//     releases.forEach((release) => {
+//         decade = release.getDecade();
+//         switch(decade) {
+//             case Decade.NineteenHundreds: {
+//                 break;
+//             }
+//         }
+//     });
+// }
+
+async function generateTimeline() {
+    var artistIdPromise = API.getArtistId(testArtist)
+    artistIdPromise.then(function(artistId){
+        var releaseIdsPromise = API.getArtistReleaseIds(artistId);
+        releaseIdsPromise.then(function(releaseIds) {
+            getReleases(releaseIds);
+        })
+        .catch(function(err) {
+            console.log(err);
+        });
+    })
+    .catch(function(err){
+        console.log(err);
+    });
+}
+
+function getReleases(releaseIds) {
+    var allReleases  = [];
+    releaseIds.reduce( (accumulator, currentValue, index) => 
+        accumulator.then(releases => 
+            API.getRelease(currentValue).then(release => allReleases.push(release))
+        ),
+        Promise.resolve([])).then(results => {
+            console.log(allReleases);
+            var release;
+            allReleases.forEach((releaseJSON) => {
+                addRelease(releaseJSON);
+            });
+        });
+}
+
+
+function addRelease (json) {
+    if(json == null) { return null; }
+    var release = new Release(json);
+
+    // extend length of spline by a fixed amount
+    var position;
+    if(splinePoints.length <= 0) { position = splinePoints.push(new THREE.Vector3(0, 100, 0)); }
+    else {
+        // get z position of last point in spline
+        // make new spline point an extension of that
+        var lastPoint = splinePoints[splinePoints.length - 1];
+        position = splinePoints.push(new THREE.Vector3(0, 100, lastPoint.z + 100));
+    }
+
+    var plane = generateReleasePlane(release.getImagePath(), position);
+    if(plane == null) { return null; }
+
+    release.object = plane;
+    scene.add(plane);
+    return release;
+}
+
+function generateReleasePlane(texturePath, position) {
+    if(position == null) { return null; }
+
+    var texture, material, plane;
+    texture = THREE.ImageUtils.loadTexture(texturePath);
+    if(texture == null ) { texture =  THREE.ImageUtils.loadTexture("../images/cover.jpg"); }
+    material = new THREE.MeshLambertMaterial({ map: texture });
+    plane = new THREE.Mesh(new THREE.PlaneGeometry(defaultPlaneSize.x, defaultPlaneSize.y), material);
+
+    plane.position.set(position.x, position.y, position.z);
+    plane.rotation.y = getRandom(0, 2*Math.PI);
+    plane.callback = function () {
+        mode = ViewMode.SingleRelease;
+        transitioning = true;
+        singleRelease = this;
+        this.rotation.set(0, Math.PI, 0);
+    }
+
+    return plane;
+}
+
+function getRandom(min, max) {
+    return Math.random() * (max - min) + min;
+}
+
 
 function initObjects () {
     var theta = 0;
@@ -76,7 +185,7 @@ function addEventListeners() {
 
 function onDocumentMouseMove(event) {
     mouseX = (event.clientX - windowHalfX) * 2;
-    mouseY = (event.clientY - windowHalfY) * 2;
+    mouseY = (event.clientY - windowHalfY) * 4;
 }
 
 function onDocumentMouseDown(event) {
@@ -160,6 +269,18 @@ var raycaster = new THREE.Raycaster();
 var mode = ViewMode.Timeline;
 var transitioning = false;
 
+var omega = 0;
+var splinePoints = [];
+var defaultPlaneSize = new THREE.Vector2(20, 20);
+var testArtist = "The+Strokes";
+var releases = [];
+
+const Decade = Release.Decade;
+var releaseDict = [
+
+]
+
+generateTimeline();
 initScene();
 addEventListeners();
 spline = SPLINE.createSpline();

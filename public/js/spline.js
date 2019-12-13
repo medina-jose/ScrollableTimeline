@@ -16,6 +16,11 @@ export function createSpline() {
     return spline;
 }
 
+// export function createSpline(points) {
+//   var spline = new THREE.CatmullRomCurve3(points);
+//   return spline;
+// }
+
 export function getPositionOnSplineRadius(spline, splineLength, alpha, theta, radius) {
   var position = spline.getPoint(alpha/splineLength);
   var x = MATHUTIL.radiansToDegrees(Math.sin(theta)) * radius + position.x;
