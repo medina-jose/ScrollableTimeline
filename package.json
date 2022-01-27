@@ -22,7 +22,7 @@
     "disconnect": "^1.2.1",
     "express": "^4.17.1",
     "express-generator": "^4.16.1",
-    "three": "^0.110.0"
+    "three": "^0.137.0"
   },
   "devDependencies": {
     "http-server": "^0.11.1",
