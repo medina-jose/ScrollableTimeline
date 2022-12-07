@@ -17,15 +17,15 @@
   },
   "homepage": "https://github.com/medina-jose/ScrollableTimeline#readme",
   "dependencies": {
-    "body-parser": "^1.19.0",
+    "body-parser": "^1.20.1",
     "cors": "^2.8.5",
     "disconnect": "^1.2.1",
-    "express": "^4.17.1",
+    "express": "^4.18.2",
     "express-generator": "^4.16.1",
     "three": "^0.110.0"
   },
   "devDependencies": {
-    "http-server": "^0.11.1",
+    "http-server": "^0.11.2",
     "mocha": "^6.2.2"
   }
 }
