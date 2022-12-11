@@ -20,7 +20,7 @@
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
     "disconnect": "^1.2.1",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "express-generator": "^4.16.1",
     "three": "^0.110.0"
   },
